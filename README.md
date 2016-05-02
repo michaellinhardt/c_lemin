@@ -1,4 +1,4 @@
-# PUSHSWAP :ant:
+# PUSHSWAP :ant: :ant: :ant: :ant: :ant:
 ## Sortng algo for array of int
 - Langage: C
 - 42 school project, docs/pushswap.pdf
