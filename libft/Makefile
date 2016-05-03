@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 03:40:52 by mlinhard          #+#    #+#              #
-#    Updated: 2016/05/03 02:23:30 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/05/03 02:29:25 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ $(NAME): $(LIST_OBJ_LIBFT) $(LIST_OBJ_PRINTF) $(LIST_OBJ_GNL)
 	ar rc $(NAME) $(LIST_OBJ_LIBFT) $(LIST_OBJ_PRINTF) $(LIST_OBJ_GNL)
 	ranlib $(NAME)
 
-LIBFT: $(LIST_OBJ_LIBFT)
+libft: $(LIST_OBJ_LIBFT)
 	ar rc $(NAME) $(LIST_OBJ_LIBFT)
 	ranlib $(NAME)
 
@@ -83,4 +83,4 @@ leaks: all -main -leaks
 -leaks:
 	@valgrind --leak-check=yes --track-origins=yes ./a.out
 
-.PHONY: clean fclean re clear test leaks LIBFT
+.PHONY: clean fclean re clear test leaks libft
