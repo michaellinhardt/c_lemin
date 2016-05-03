@@ -19,6 +19,9 @@ Working on how implementing a faster code. Below is a todo list to help:
 - Using memcpy as often as possible.
 - Reduce var number in structure.
 
+## Other
+- Makefile is a new one recommended by another student.
+
 ## repo map
 | repo path | description |
 | ------------- | ------------- |
