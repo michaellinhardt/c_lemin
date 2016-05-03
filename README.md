@@ -1,14 +1,38 @@
-# PUSHSWAP :ant: :ant: :ant: :ant: :ant:
-## Sortng algo for array of int
+# [ LEM'IN ] :ant: :ant: :ant: :ant: :ant:
+## Path finding algo
 - Langage: C
-- 42 school project, docs/pushswap.pdf
-- Date: avr. 2016
+- see docs/pushswap.pdf for more
+- Date: may 2016
+
+## About
+This programme is initialized with a file containing the parameters. Paramaters
+are describing a map with box and link beetwin them. A starting box and an ending
+box. All ants have to go from the start to the end. Each move are sequenced with a
+turn system and all ants can only do one move per turn. A box can't contain more than
+one ant. It's all about finding wich way are/is the best to achieve ?
+
+## Personnal goal
+Working on how implementing a faster code. Below is a todo list to help:
+- Trying with more static than malloc
+- Do not use my ft_printf to have a smaller area of work.
+- Rework some libft functions or make new one oriented on the goal.
+- Using memcpy as often as possible.
+- Reduce var number in structure.
 
 ## repo map
 | repo path | description |
 | ------------- | ------------- |
-| docs/pushswap.pdf	 | french details of project	 |
-| includes/			 | headers location						 |
+| docs/lemin.pdf		 | project description in french	 |
+| incs/					 | headers location					 |
 | libft/				 | libft.a project <a href="https://github.com/nesthub/c_libft" target="_blank">here</a>	 |
-| srcs/				 | .c sources							 |
-| auteur				 | 42 requierement: author's login	 |
+| srcs/					 | sources							 |
+| auteur				 | 42 login file					 |
+
+## Nameplate
+| nameplate | description |
+| ------------- | ------------- |
+| pFunctionname();	 | 		parsing function		 |
+| rFunctionname();	 | 		recursive function		 |
+| oFunctionname();	 | 		options function		 |
+| iFunctionname();	 | 		init function			 |
+| sFunctionname();	 | 		structure function		 |
