@@ -21,13 +21,16 @@ C_BLUE	= "\033[34;1m"
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) libft
 	$(CC) $(OBJ) -o $@
 	@echo "✅  ["$(C_GOOD) $(NAME) $(C_END)"] created"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(LANGAGE)
 	@mkdir -p $(dir $@)
 	$(CC) $(INCS) -o $@ -c $<
+
+libft:
+	make libft -C $(LIBS)
 
 clean:
 	@/bin/rm -rf $(OBJ_DIR)
@@ -39,4 +42,4 @@ fclean: clean
 
 re: fclean $(NAME)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libft
