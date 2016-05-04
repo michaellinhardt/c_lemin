@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lemin.c                                         :+:      :+:    :+:   */
+/*   ft_lemin_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/04 01:49:54 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/04 06:08:00 by mlinhard         ###   ########.fr       */
+/*   Created: 2016/05/04 05:09:44 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/05/04 05:19:40 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lemin.h"
 
-int		main(void)
+void	eExit(int error)
 {
-	t_data		data;
-
-	ft_bzero(&data, sizeof(t_data));
-	pRun(&data);
-	return (0);
+	if (error == 1 && ft_printf("ERROR"))
+		exit(0);
 }

@@ -1,17 +1,19 @@
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror -g
 CC		= gcc $(FLAGS)
 INCS 	= -I./incs -I./libft/includes
 LIBS 	= ./libft
 LANGAGE	= c
 
-NAME	= lemin
+NAME	= lem-in
 
 SRC_DIR = srcs
 OBJ_DIR = objs
 
 
 
-LIST 	= ft_lemin
+LIST 	= ft_lemin \
+ft_lemin_error \
+ft_lemin_prun \
 
 SRC := $(addprefix $(SRC_DIR)/, $(addsuffix .$(LANGAGE), $(LIST)))
 OBJ := $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(LIST)))
@@ -35,7 +37,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(LANGAGE)
 
 test: $(NAME)
 	@echo "✅  ["$(C_GOOD) $(NAME) $(C_END)"] start"
-	@./lemin
+	@./$(NAME) < ./maps/basic.map
 
 clean:
 	@make clean -C $(LIBS)
@@ -50,6 +52,11 @@ fclean: clean2
 	@make fclean -C $(LIBS)
 	@/bin/rm -f $(NAME)
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] bin deleted"
+
+leaks: $(NAME) -leaks
+
+-leaks:
+	@-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) < ./maps/basic.map
 
 re: fclean libft $(NAME)
 

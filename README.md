@@ -39,3 +39,4 @@ Working on how implementing a faster code. Below is a todo list to help:
 | oFunctionname();	 | 		options function		 |
 | iFunctionname();	 | 		init function			 |
 | sFunctionname();	 | 		structure function		 |
+| eFunctionname();	 | 		error function			 |

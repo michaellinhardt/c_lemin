@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lemin.c                                         :+:      :+:    :+:   */
+/*   ft_lemin_struct.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/04 01:49:54 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/04 06:08:00 by mlinhard         ###   ########.fr       */
+/*   Created: 2016/05/04 05:28:15 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/05/04 06:09:01 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_lemin.h"
+#ifndef FT_LEMIN_STRUCT_H
+# define FT_LEMIN_STRUCT_H
 
-int		main(void)
+typedef struct			s_pBox
 {
-	t_data		data;
 
-	ft_bzero(&data, sizeof(t_data));
-	pRun(&data);
-	return (0);
-}
+}						t_pBox;
+
+typedef struct			s_data
+{
+	intmax_t			ants;
+}						t_data;
+
+#endif
