@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 03:40:52 by mlinhard          #+#    #+#              #
-#    Updated: 2016/05/04 02:19:26 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/05/04 04:23:10 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,8 +60,8 @@ all: $(NAME)
 %.o: %.c
 	$(CC) $(CFLAGS) -I./includes/ -c -o $@ $<
 
-$(NAME): $(LIST_OBJ_LIBFT)
-	@ar rc $(NAME) $(LIST_OBJ_LIBFT)
+$(NAME): $(LIST_OBJ_LIBFT) $(LIST_OBJ_PRINTF) $(LIST_OBJ_GNL)
+	@ar rc $(NAME) $(LIST_OBJ_LIBFT) $(LIST_OBJ_PRINTF) $(LIST_OBJ_GNL)
 	@ranlib $(NAME)
 	@echo "✅  ["$(C_GOOD) $(NAME) $(C_END)"] created"
 

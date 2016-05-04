@@ -9,6 +9,8 @@ NAME	= lemin
 SRC_DIR = srcs
 OBJ_DIR = objs
 
+
+
 LIST 	= ft_lemin
 
 SRC := $(addprefix $(SRC_DIR)/, $(addsuffix .$(LANGAGE), $(LIST)))
@@ -31,7 +33,9 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(LANGAGE)
 	@mkdir -p $(dir $@)
 	$(CC) $(INCS) -o $@ -c $<
 
-libft:
+test: $(NAME)
+	@echo "✅  ["$(C_GOOD) $(NAME) $(C_END)"] start"
+	@./lemin
 
 clean:
 	@make clean -C $(LIBS)
@@ -49,4 +53,4 @@ fclean: clean2
 
 re: fclean libft $(NAME)
 
-.PHONY: all clean fclean re libft
+.PHONY: all clean clean2 fclean re libft test

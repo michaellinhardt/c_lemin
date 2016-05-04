@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:49:54 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/04 02:11:06 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/04 04:28:03 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ int		main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	ft_putstr("ok\n");
-	return (1);
+	ft_printf("%s\n", "lalo ahahahah");
+	return (0);
 }
