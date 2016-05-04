@@ -1,6 +1,7 @@
 FLAGS	= -Wall -Wextra -Werror
 CC		= gcc $(FLAGS)
 INCS 	= -I./incs -I./libft/includes
+LIBS 	= ./libft
 LANGAGE	= c
 
 NAME	= lemin
@@ -8,7 +9,7 @@ NAME	= lemin
 SRC_DIR = srcs
 OBJ_DIR = objs
 
-LIST 	= main
+LIST 	= ft_lemin
 
 SRC := $(addprefix $(SRC_DIR)/, $(addsuffix .$(LANGAGE), $(LIST)))
 OBJ := $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(LIST)))
@@ -21,8 +22,9 @@ C_BLUE	= "\033[34;1m"
 
 all: $(NAME)
 
-$(NAME): $(OBJ) libft
-	$(CC) $(OBJ) -o $@
+$(NAME): $(OBJ)
+	@make -C $(LIBS)
+	$(CC) $(OBJ) -o $@ -L$(LIBS) -lft
 	@echo "✅  ["$(C_GOOD) $(NAME) $(C_END)"] created"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(LANGAGE)
@@ -30,16 +32,21 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(LANGAGE)
 	$(CC) $(INCS) -o $@ -c $<
 
 libft:
-	make libft -C $(LIBS)
 
 clean:
+	@make clean -C $(LIBS)
 	@/bin/rm -rf $(OBJ_DIR)
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] $(OBJ_DIR) folder deleted"
 
-fclean: clean
+clean2:
+	@/bin/rm -rf $(OBJ_DIR)
+	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] $(OBJ_DIR) folder deleted"
+
+fclean: clean2
+	@make fclean -C $(LIBS)
 	@/bin/rm -f $(NAME)
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] bin deleted"
 
-re: fclean $(NAME)
+re: fclean libft $(NAME)
 
 .PHONY: all clean fclean re libft

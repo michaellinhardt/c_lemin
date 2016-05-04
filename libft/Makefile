@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 03:40:52 by mlinhard          #+#    #+#              #
-#    Updated: 2016/05/03 02:29:25 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/05/04 02:19:26 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,26 +49,31 @@ LIST_OBJ_LIBFT	= $(subst .c,.o,$(PATH_LIBFT))
 LIST_OBJ_PRINTF	= $(subst .c,.o,$(PATH_PRINTF))
 LIST_OBJ_GNL	= $(subst .c,.o,$(PATH_GNL))
 
+C_END	= "\033[0m"
+C_GOOD	= "\033[32m"
+C_GREY  = "\033[1;30m"
+C_BAD	= "\033[31m"
+C_BLUE	= "\033[34;1m"
+
 all: $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I./includes/ -c -o $@ $<
 
-$(NAME): $(LIST_OBJ_LIBFT) $(LIST_OBJ_PRINTF) $(LIST_OBJ_GNL)
-	ar rc $(NAME) $(LIST_OBJ_LIBFT) $(LIST_OBJ_PRINTF) $(LIST_OBJ_GNL)
-	ranlib $(NAME)
-
-libft: $(LIST_OBJ_LIBFT)
-	ar rc $(NAME) $(LIST_OBJ_LIBFT)
-	ranlib $(NAME)
+$(NAME): $(LIST_OBJ_LIBFT)
+	@ar rc $(NAME) $(LIST_OBJ_LIBFT)
+	@ranlib $(NAME)
+	@echo "✅  ["$(C_GOOD) $(NAME) $(C_END)"] created"
 
 clean:
-	rm -rf $(LIST_OBJ_LIBFT)
-	rm -rf $(LIST_OBJ_PRINTF)
-	rm -rf $(LIST_OBJ_GNL)
+	@rm -rf $(LIST_OBJ_LIBFT)
+	@rm -rf $(LIST_OBJ_PRINTF)
+	@rm -rf $(LIST_OBJ_GNL)
+	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] objs deleted"
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
+	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] bin deleted"
 
 re: fclean all
 
