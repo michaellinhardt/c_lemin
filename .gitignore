@@ -1,3 +1,6 @@
+# Project bin
+./lemin
+
 # Object files
 *.o
 *.ko
