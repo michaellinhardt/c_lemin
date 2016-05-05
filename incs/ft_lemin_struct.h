@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:28:15 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/04 06:09:01 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/05 05:15:35 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 
 typedef struct			s_pBox
 {
-
+	char				*name;
+	int					x;
+	int					y;
+	struct s_pBox		*n;
 }						t_pBox;
 
 typedef struct			s_data
 {
-	intmax_t			ants;
+	int					ants;
+	t_pBox				*box;
 }						t_data;
 
 #endif
