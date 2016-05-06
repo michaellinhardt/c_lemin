@@ -18,6 +18,7 @@ Working on how implementing a faster code. Below is a todo list to help:
 - Rework some libft functions or make new one oriented on the goal.
 - Using memcpy as often as possible.
 - Reduce var number in structure.
+- Use char unstead of int for boolean type 
 
 ## Other
 - Makefile is a new one recommended by another student.

@@ -6,14 +6,15 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 17:33:28 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/16 18:55:59 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/05 06:51:44 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strdel(char **as)
+int		ft_strdel(char **as)
 {
 	if (as)
 		ft_memdel((void **)as);
+	return (1);
 }

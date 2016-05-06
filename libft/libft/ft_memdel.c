@@ -6,18 +6,19 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 16:30:15 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/16 19:02:52 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/05 06:52:12 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-void	ft_memdel(void **ap)
+int		ft_memdel(void **ap)
 {
 	if (ap && *ap)
 	{
 		free(*ap);
 		*ap = NULL;
 	}
+	return (1);
 }
