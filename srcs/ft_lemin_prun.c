@@ -6,15 +6,37 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:50:11 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/06 16:41:35 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/06 17:39:29 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lemin.h"
 
-t_pBox		*pBox(t_pBox *root, char *l)
+char		pType(char *l)
 {
-	t_pBox_tmp	s;
+	int		space;
+	int		tiret;
+	int		i;
+
+	space = 0;
+	tiret = 0;
+	i = -1;
+	while (l[++i])
+	{
+		space += (l[i] == ' ') ? 1 : 0;
+		tiret += (l[i] == '-') ? 1 : 0;
+	}
+	if (!space)
+		return (2);
+	else if (space == 2)
+		return (1);
+	else
+		return (0);
+}
+
+void		pRead(t_data *d, t_pBox *root, char *l)
+{
+	t_pRead		s;
 
 	ft_bzero(&s, sizeof(t_pBox_tmp));
 	// lis le fichier ligne par ligne, en commencant après le nb fourmis
@@ -65,6 +87,6 @@ int			pAnts(void)
 void		pRun(t_data *d)
 {
 	d->ants = pAnts(); // parse le nombre de fourmis
-	d->box = pBox((t_pBox *)NULL, (char *)NULL); // créer la liste des box
+	pRead(d, (t_pBox *)NULL, (char *)NULL); // créer la liste des box
 	get_next_line(-10, NULL);
 }

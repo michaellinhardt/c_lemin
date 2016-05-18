@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:28:15 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/05 07:17:04 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/06 17:31:06 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ typedef struct			s_pBox
 	struct s_pBox		*n;
 }						t_pBox;
 
-typedef struct			s_pBox_tmp
+typedef struct			t_pRead
 {
 	int					i;
 	char				type;
 	char				start;
 	char				end;
-}						t_pBox_tmp;
+	char				step;
+}						t_pRead;
 
 typedef struct			s_data
 {
