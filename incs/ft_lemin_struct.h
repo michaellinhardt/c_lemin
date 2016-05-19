@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:28:15 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/06 17:31:06 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/19 20:31:14 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,13 @@ typedef struct			s_pBox
 typedef struct			t_pRead
 {
 	int					i;
+	char				j;
+	// type permet de déterminer le type de la ligne suivante
+	// 1 = start
+	// 2 = end
+	// 0 = box
 	char				type;
+	// Si start ou end est à 1 on à déjà enregistré une box début ou fin
 	char				start;
 	char				end;
 	char				step;
@@ -33,6 +39,7 @@ typedef struct			t_pRead
 
 typedef struct			s_data
 {
+	int					i;
 	int					ants;
 	t_pBox				*box;
 }						t_data;

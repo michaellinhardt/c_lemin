@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:49:54 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/04 06:08:00 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/19 20:02:25 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ int		main(void)
 
 	ft_bzero(&data, sizeof(t_data));
 	pRun(&data);
+	fDataBox(&data);
 	return (0);
 }

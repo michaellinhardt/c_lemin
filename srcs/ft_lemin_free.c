@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lemin_error.c                                   :+:      :+:    :+:   */
+/*   ft_lemin_free.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/04 05:09:44 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/19 20:26:30 by mlinhard         ###   ########.fr       */
+/*   Created: 2016/05/19 20:02:45 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/05/19 20:05:34 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lemin.h"
 
-int		eExit(int error, t_data *d)
+void	fDataBox(t_data *d)
 {
-	get_next_line(-10, NULL);
-	fDataBox(d);
-	if (error == 1 && ft_printf("ERROR"))
-		exit(0);
-	return (1);
-}
+	t_pBox *lst;
+	t_pBox *del;
 
-int		eExit2(int error, t_data *d, char *del)
-{
-	get_next_line(-10, NULL);
-	ft_strdel(&del);
-	fDataBox(d);
-	if (error == 1 && ft_printf("ERROR"))
-		exit(0);
-	return (1);
+	lst = d->box;
+	while (lst)
+	{
+		del = lst;
+		lst = lst->n;
+		ft_strdel(&del->name);
+		ft_memdel((void **)&del);
+	}
 }
