@@ -9,13 +9,11 @@ NAME	= lem-in
 SRC_DIR = srcs
 OBJ_DIR = objs
 
-
-
 LIST 	= ft_lemin \
 ft_lemin_error \
 ft_lemin_prun \
 ft_lemin_free \
-ft_lemin_data
+ft_lemin_addbox
 
 SRC := $(addprefix $(SRC_DIR)/, $(addsuffix .$(LANGAGE), $(LIST)))
 OBJ := $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(LIST)))
