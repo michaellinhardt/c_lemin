@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:50:11 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/19 20:38:42 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/20 18:11:24 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char		pType(char *l)
 	else if (!space && tiret != 1)
 		return (0);
 	// 2 espace = box
-	else if (space == 2)
+	else if (space == 2 && !tiret)
 		return (1);
 	// sinon erreur
 	else
@@ -50,7 +50,7 @@ void		pRead(t_data *d, char *l)
 	while (ft_strdel(&l) && get_next_line(0, &l))
 	{
 		// stop si débute avec L ou ligne vide
-		(!*l || *l == 'L') ? eExit2(1, d, l) : 1;
+		((!*l || *l == 'L') && !s.step) ? eExit2(1, d, l) : 1;
 		// detect les commande start & end & commentaires & régle le type de la box suivante
 		if (!ft_strcmp(l, "##start") && (s.type = 1))
 			(s.start) ? eExit2(1, d, l) : (s.start = 1);
@@ -65,14 +65,18 @@ void		pRead(t_data *d, char *l)
 				eExit2(1, d, l);
 			else if (s.j == 1 && !s.step)
 				dBox(d, l, -1, s.type);
-			else if (s.j == 2 && (s.step = 1))
-				ft_printf("li1: %s\n", l);
-			else if ((s.j == 1 || !s.j) && s.step == 1)
-				ft_printf("fin du parsing par erreur, lancement de l'algo\n");
-			// On a interprété la ligne, on remet le type à 0
+				// si on trouve autre chose qu'un lien pendant la lecture des lien
+			else if (((s.j == 1 || !s.j) && s.step == 1) ||
+				// si on à un lien qui est invalidé par dLink
+					((s.j == 2 && (s.step = 1)) && dLink(d, l, -1, -1)) ||
+				// Si on a une ligne vide ou débutant par L pendant la lecture des lien
+					(s.step && (!*l || *l == 'L')))
+				break ;
 			s.type = 0;
 		}
 	}
+	ft_strdel(&l);
+	ft_printf("fin du parsing, lancement de l'algo\n");
 }
 
 int			pAnts(void)
@@ -107,12 +111,11 @@ void		pRun(t_data *d)
 	d->ants = pAnts(); // parse le nombre de fourmis
 	pRead(d, (char *)NULL); // créer la liste des box
 
-	box = d->box;
-	while (box)
-	{
-		ft_printf("(%d)[%s] %d %d\n", box->type, box->name, box->x, box->y);
-		box = box->n;
-	}
+
+// DEBUG LISTING DES BOX
+	box = d->box; while (box)
+	{ ft_printf("(%d)[%s] %d %d\n", box->type, box->name, box->x, box->y);
+		box = box->n; }
 
 
 	get_next_line(-10, NULL);
