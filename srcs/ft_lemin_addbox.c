@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 16:43:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/21 16:31:35 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/21 20:10:14 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ int			dBoxAdd(t_data *d, char nom[4096], char x[12], char y[12])
 	}
 	new->links = NULL;
 	new->name = name;
-	new->type = d->i;
+	if ((new->type = d->i) == 1)
+		d->start = new;
+	else if (d->i == 2)
+		d->end = new;
 	new->x = ft_atoi(x);
 	new->y = ft_atoi(y);
 	return (0);
@@ -61,17 +64,16 @@ void		dBox(t_data *d, char *l, int i, char type)
 	char	name[4096];
 	int		j;
 
-	ft_bzero(name, (sizeof(char) * 4096));
 	while ((j = -1) && l[++i] && l[i] != ' ')
 		name[i] = l[i];
-	ft_bzero(&coord, (sizeof(char) * 12));
-	ft_bzero(&coord2, (sizeof(char) * 12));
+	name[i] = '\0';
 	while (l[++i] && l[i] != ' ')
 	{
 		if (!ft_isdigit(l[i]))
 			eExit2(1, d, l);
 		coord[++j] = l[i];
 	}
+	coord[++j] = '\0';
 	j = -1;
 	while (((d->i = type) || 1) && l[++i])
 	{
@@ -79,6 +81,7 @@ void		dBox(t_data *d, char *l, int i, char type)
 			eExit2(1, d, l);
 		coord2[++j] = l[i];
 	}
+	coord2[++j] = '\0';
 	if (dBoxAdd(d, name, coord, coord2))
 		eExit2(1, d, l);
 }

@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:28:15 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/21 18:21:40 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/21 19:54:21 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct			s_data
 	int					i;
 	int					ants;
 	t_pBox				*box;
+	t_pBox				*start;
+	t_pBox				*end;
 }						t_data;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:50:11 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/21 19:02:45 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/21 20:07:28 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,9 @@ void		pRead(t_data *d, char *l)
 {
 	t_pRead		s;
 
-	(void)d;
 	ft_bzero(&s, sizeof(t_pRead));
-	// lis le fichier ligne par ligne, en commencant après le nb fourmis
 	while (ft_strdel(&l) && get_next_line(0, &l))
 	{
-		// stop si débute avec L ou ligne vide
 		((!*l || *l == 'L') && !s.step) ? eExit2(1, d, l) : 1;
 		// detect les commande start & end & commentaires & régle le type de la box suivante
 		if (!ft_strcmp(l, "##start") && (s.type = 1))
@@ -79,15 +76,20 @@ void		pRead(t_data *d, char *l)
 	// Si on a aucune box
 	if (!d->box)
 		eExit(1, d);
-	ft_printf("fin du parsing, lancement de l'algo\n");
 }
 
 int			pAnts(char	*line, char	*verif, int ants, size_t len)
 {
 	// saute les commentaires en entré de fichiers et régle verif
-	while (ft_strdel(&line) && get_next_line(0, &line))
+	while (ft_strdel(&line) && (get_next_line(0, &line)) > 0)
+	{
+		if (!ft_strcmp(line, "##start") || !ft_strcmp(line, "##end"))
+			eExit2(1, (t_data *)NULL, line);
 		if (*line != '#' && (verif = line))
 			break;
+	}
+	if (!line)
+		eExit2(1, (t_data *)NULL, line);
 	// control si la ligne contiens que des chiffre
 	while (line && *verif && ft_isdigit(*verif))
 		verif++;
@@ -108,7 +110,8 @@ void		pRun(t_data *d)
 	d->ants = pAnts((char *)NULL, (char *)NULL, -1, 0);
 	// parse le fichier
 	pRead(d, (char *)NULL);
-
+	if (!d->start || !d->end)
+		eExit(1, d);
 
 // DEBUG LISTING DES BOX
 	ft_printf("fourmis: %d\n", d->ants);
