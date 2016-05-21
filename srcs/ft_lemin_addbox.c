@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 16:43:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/20 13:57:38 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/21 16:31:35 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ int			dBoxAdd(t_data *d, char nom[4096], char x[12], char y[12])
 	t_pBox	*lst;
 	char	*name;
 
-	if (dBoxCheck(d, nom, ft_atoi(x), ft_atoi(y)))
-		return (1);
-	if (!(name = ft_strnew(4096)))
+	if (dBoxCheck(d, nom, ft_atoi(x), ft_atoi(y)) || !(name = ft_strnew(4096)))
 		return (1);
 	name = ft_memcpy(name, nom, 4096);
 	if (!(new = (t_pBox *)ft_memalloc(sizeof(t_pBox))))
@@ -48,6 +46,7 @@ int			dBoxAdd(t_data *d, char nom[4096], char x[12], char y[12])
 			lst = lst->n;
 		lst->n = new;
 	}
+	new->links = NULL;
 	new->name = name;
 	new->type = d->i;
 	new->x = ft_atoi(x);

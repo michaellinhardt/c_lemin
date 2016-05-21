@@ -6,37 +6,58 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 16:57:03 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/20 18:00:01 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/21 19:41:35 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lemin.h"
 
-void		dLinkAdd(t_data *d, char n1[4096], char n2[4096])
+void		dLinkAdd(t_pBox *b1, t_pBox *b2, t_pBoxLink *l1)
 {
-	ft_printf("(%d)Ajout de lien: %s - %s\n", d->ants, n1, n2);
+	t_pBoxLink *l;
+
+	l1->link = b2;
+	if (!(l = b1->links))
+		b1->links = l1;
+	else
+	{
+		while (l)
+		{
+			if (l->link->name == l1->link->name && ft_memdel((void **)&l1))
+				break ;
+			if (!l->n && (l->n = l1))
+				break ;
+			l = l->n;
+		}
+	}
 }
 
-int			dLinkVerif(t_data *d, char n1[4096], char n2[4096])
+int			dLinkVerif(char n1[4096], char n2[4096], t_pBox	*lst, t_pBox *b1)
 {
-	int		verif[2];
-	t_pBox	*lst;
+	t_pBox		*b2;
+	t_pBoxLink	*l1;
+	t_pBoxLink	*l2;
 
-	verif[0] = 0;
-	verif[1] = 0;
-	lst = d->box;
+	b2 = NULL;
 	while (lst)
 	{
 		if (!ft_strcmp(n1, lst->name))
-			verif[0] = 1;
+			b1 = lst;
 		else if (!ft_strcmp(n2, lst->name))
-			verif[1] = 1;
+			b2 = lst;
 		lst = lst->n;
 	}
-	if (verif[0] == verif[1] == 1)
+	if (b1 && b2)
+	{
+		if (!(l1 = (t_pBoxLink *)ft_memalloc(sizeof(t_pBoxLink))))
+			return (1);
+		if (!(l2 = (t_pBoxLink *)ft_memalloc(sizeof(t_pBoxLink))))
+			return (1);
+		dLinkAdd(b1, b2, l1);
+		dLinkAdd(b2, b1, l2);
 		return (0);
-	else
-		return (1);
+	}
+	return (1);
 }
 
 int			dLink(t_data *d, char *l, int i, int j)
@@ -51,8 +72,7 @@ int			dLink(t_data *d, char *l, int i, int j)
 	while (l[++i])
 		n2[++j] = l[i];
 	// ici on a une erreur, on stop le parsing et on démarre l'algo
-	if (dLinkVerif(d, n1, n2))
+	if (dLinkVerif(n1, n2, d->box, (t_pBox *)NULL))
 		return (1);
-	dLinkAdd(d, n1, n2);
 	return (0);
 }

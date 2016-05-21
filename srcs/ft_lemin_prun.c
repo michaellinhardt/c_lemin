@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:50:11 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/20 18:11:24 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/21 19:02:45 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		pRead(t_data *d, char *l)
 			//ici on a une ligne a parse, elle n'est ni un commentaire ni une ligne débutant par L
 			// On vérifie si c'est bien une box
 			// On stop si on à une ligne invalide et que step = 0, ce qui signifie qu'on à aucun lien pour le moment
-			if (!(s.j = pType(l)) && !s.step)
+			if ((!(s.j = pType(l)) && !s.step) || (s.j == 2 && !d->box))
 				eExit2(1, d, l);
 			else if (s.j == 1 && !s.step)
 				dBox(d, l, -1, s.type);
@@ -76,27 +76,25 @@ void		pRead(t_data *d, char *l)
 		}
 	}
 	ft_strdel(&l);
+	// Si on a aucune box
+	if (!d->box)
+		eExit(1, d);
 	ft_printf("fin du parsing, lancement de l'algo\n");
 }
 
-int			pAnts(void)
+int			pAnts(char	*line, char	*verif, int ants, size_t len)
 {
-	char	*line;
-	char	*verif;
-	int		ants;
-
-	// réglé a NULL pour gérer les fichier vide
-	line = (char *)NULL;
-	verif = (char *)NULL;
 	// saute les commentaires en entré de fichiers et régle verif
-	while (get_next_line(0, &line))
+	while (ft_strdel(&line) && get_next_line(0, &line))
 		if (*line != '#' && (verif = line))
 			break;
-		else
-			ft_strdel(&line);
 	// control si la ligne contiens que des chiffre
 	while (line && *verif && ft_isdigit(*verif))
 		verif++;
+	if ((len = ft_strlen(line)) > 10)
+		eExit2(1, (t_data *)NULL, line);
+	else if (len == 10 && ft_atoimax(line) > INT_MAX)
+		eExit2(1, (t_data *)NULL, line);
 	// pour gagner des ligne on stock tte suite ants et on free
 	ants = (line && (!*verif)) ? ft_atoi(line) : -1;
 	ft_strdel(&line);
@@ -106,16 +104,25 @@ int			pAnts(void)
 
 void		pRun(t_data *d)
 {
-	t_pBox	*box;
-
-	d->ants = pAnts(); // parse le nombre de fourmis
-	pRead(d, (char *)NULL); // créer la liste des box
+	// parse le nombre de fourmis
+	d->ants = pAnts((char *)NULL, (char *)NULL, -1, 0);
+	// parse le fichier
+	pRead(d, (char *)NULL);
 
 
 // DEBUG LISTING DES BOX
-	box = d->box; while (box)
+	ft_printf("fourmis: %d\n", d->ants);
+	int i; t_pBoxLink *link; t_pBox *box = d->box; while (box)
 	{ ft_printf("(%d)[%s] %d %d\n", box->type, box->name, box->x, box->y);
-		box = box->n; }
+		if (box->links)
+		{
+			link = box->links;
+			i = 0; while (link && ++i)
+			{
+				ft_printf("tube %d: %s\n", i, (link->link)->name);
+				link = link->n;
+			}
+		} box = box->n; }
 
 
 	get_next_line(-10, NULL);

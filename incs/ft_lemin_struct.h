@@ -6,12 +6,18 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:28:15 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/20 18:14:12 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/21 18:21:40 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LEMIN_STRUCT_H
 # define FT_LEMIN_STRUCT_H
+
+typedef struct			s_pBoxLink
+{
+	struct s_pBox		*link;
+	struct s_pBoxLink	*n;
+}						t_pBoxLink;
 
 typedef struct			s_pBox
 {
@@ -21,6 +27,7 @@ typedef struct			s_pBox
 	int					x;
 	int					y;
 	struct s_pBox		*n;
+	struct s_pBoxLink	*links;
 }						t_pBox;
 
 typedef struct			t_pRead
