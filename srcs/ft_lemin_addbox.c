@@ -6,13 +6,13 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 16:43:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/23 17:31:13 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/23 22:30:36 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lemin.h"
 
-int			dBoxCheck(t_data *d, char name[4096], int x, int y)
+int			dBoxCheck(t_data *d, char *name, int x, int y)
 {
 	t_pBox	*lst;
 
@@ -82,28 +82,25 @@ int			dBoxCoord(t_data *d, char *l, char c, int len)
 void		dBox(t_data *d, char *l, int x, char type)
 {
 	int		y;
-	char	name[4096];
-	char	*nom;
+	char	*name;
 
-	nom = NULL;
 	d->i = -1;
 	while (l[++d->i] && l[d->i] != ' ')
-	{
 		if (l[d->i] == '-')
 			eExit2(1, d, l);
-		name[d->i] = l[d->i];
-	}
+	if (l[d->i])
+		name = ft_strsub(l, 0, d->i);
+	else
+		eExit2(1, d, l);
 	if (d->i == 0)
 		eExit2(1, d, l);
-	name[d->i] = '\0';
 	d->ret = 0;
 	x = dBoxCoord(d, l, ' ', 0);
 	y = dBoxCoord(d, l, '\0', 0);
 	d->i = type;
-	if ((d->ret == -1) || dBoxCheck(d, name, x, y) ||
-		!(nom = ft_strdup(name)) || dBoxAdd(d, nom, x, y))
+	if ((d->ret == -1) || dBoxCheck(d, name, x, y) || dBoxAdd(d, name, x, y))
 	{
-		ft_strdel(&nom);
+		ft_strdel(&name);
 		eExit2(1, d, l);
 	}
 }

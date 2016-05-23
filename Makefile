@@ -55,6 +55,7 @@ fclean: clean2
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] bin deleted"
 
 leaks: $(NAME) -leaks
+#leaks: test
 
 -leaks:
 	@-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) < ./maps/basic.map
