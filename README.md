@@ -7,14 +7,14 @@
 ## About
 This programme is initialized with a file containing the parameters. Paramaters
 are describing a map with box and link beetwin them. A starting box and an ending
-box. All ants have to go from the start to the end. Each move are sequenced with a
-turn system and all ants can only do one move per turn. A box can't contain more than
-one ant. It's all about finding wich way are/is the best to achieve ?
+box + a numbers of ants. All ants have to go from the starting box to the endind box.
+Each move are sequenced with a turn system and all ants can only do one move per
+turn. A box can't contain more than one ant. It's all about finding wich way
+are/is the best to achieve ?
 
 ## Personnal goal
 Working on how implementing a faster code. Below is a todo list to help:
-- Trying with more static than malloc
-- Do not use my ft_printf to have a smaller area of work.
+- Trying with more stack memory than malloc
 - Rework some libft functions or make new one oriented on the goal.
 - Using memcpy as often as possible.
 - Reduce var number in structure.

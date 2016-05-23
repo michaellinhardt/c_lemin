@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:28:15 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/21 19:54:21 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/23 16:57:19 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct			t_pRead
 typedef struct			s_data
 {
 	int					i;
+	char				ret;
 	int					ants;
 	t_pBox				*box;
 	t_pBox				*start;

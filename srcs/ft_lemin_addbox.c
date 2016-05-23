@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 16:43:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/21 20:10:14 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:31:13 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,11 @@ int			dBoxCheck(t_data *d, char name[4096], int x, int y)
 	return (0);
 }
 
-int			dBoxAdd(t_data *d, char nom[4096], char x[12], char y[12])
+int			dBoxAdd(t_data *d, char *name, int x, int y)
 {
 	t_pBox	*new;
 	t_pBox	*lst;
-	char	*name;
 
-	if (dBoxCheck(d, nom, ft_atoi(x), ft_atoi(y)) || !(name = ft_strnew(4096)))
-		return (1);
-	name = ft_memcpy(name, nom, 4096);
 	if (!(new = (t_pBox *)ft_memalloc(sizeof(t_pBox))))
 		return (1);
 	if (!d->box)
@@ -47,41 +43,67 @@ int			dBoxAdd(t_data *d, char nom[4096], char x[12], char y[12])
 		lst->n = new;
 	}
 	new->links = NULL;
+	new->n = NULL;
 	new->name = name;
 	if ((new->type = d->i) == 1)
 		d->start = new;
 	else if (d->i == 2)
 		d->end = new;
-	new->x = ft_atoi(x);
-	new->y = ft_atoi(y);
+	new->x = x;
+	new->y = y;
 	return (0);
 }
 
-void		dBox(t_data *d, char *l, int i, char type)
+int			dBoxCoord(t_data *d, char *l, char c, int len)
 {
-	char	coord[12];
-	char	coord2[12];
-	char	name[4096];
-	int		j;
+	char		coord[12];
+	intmax_t	icoord;
+	int			j;
 
-	while ((j = -1) && l[++i] && l[i] != ' ')
-		name[i] = l[i];
-	name[i] = '\0';
-	while (l[++i] && l[i] != ' ')
-	{
-		if (!ft_isdigit(l[i]))
-			eExit2(1, d, l);
-		coord[++j] = l[i];
-	}
-	coord[++j] = '\0';
 	j = -1;
-	while (((d->i = type) || 1) && l[++i])
+	if (l[(d->i + 1)] == '-' && ++len && (coord[++j] = '-'))
+		d->i++;
+	while (l[++d->i] && l[d->i] != c && ++len < 12)
 	{
-		if (!ft_isdigit(l[i]))
-			eExit2(1, d, l);
-		coord2[++j] = l[i];
+		if (!ft_isdigit(l[d->i]))
+			return ((d->ret = -1));
+		coord[++j] = l[d->i];
 	}
-	coord2[++j] = '\0';
-	if (dBoxAdd(d, name, coord, coord2))
+	if (len == 12 && l[d->i] != c)
+		return ((d->ret = -1));
+	coord[++j] = '\0';
+	icoord = ft_atoimax(coord);
+	if (len == 0 ||
+		(icoord < 0 && icoord < INT_MIN) || (icoord > 0 && icoord > INT_MAX))
+		return ((d->ret = -1));
+	return ((int)icoord);
+}
+
+void		dBox(t_data *d, char *l, int x, char type)
+{
+	int		y;
+	char	name[4096];
+	char	*nom;
+
+	nom = NULL;
+	d->i = -1;
+	while (l[++d->i] && l[d->i] != ' ')
+	{
+		if (l[d->i] == '-')
+			eExit2(1, d, l);
+		name[d->i] = l[d->i];
+	}
+	if (d->i == 0)
 		eExit2(1, d, l);
+	name[d->i] = '\0';
+	d->ret = 0;
+	x = dBoxCoord(d, l, ' ', 0);
+	y = dBoxCoord(d, l, '\0', 0);
+	d->i = type;
+	if ((d->ret == -1) || dBoxCheck(d, name, x, y) ||
+		!(nom = ft_strdup(name)) || dBoxAdd(d, nom, x, y))
+	{
+		ft_strdel(&nom);
+		eExit2(1, d, l);
+	}
 }

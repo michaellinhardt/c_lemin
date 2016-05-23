@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:50:11 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/21 20:07:28 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:17:12 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char		pType(char *l)
 	else if (!space && tiret != 1)
 		return (0);
 	// 2 espace = box
-	else if (space == 2 && !tiret)
+	else if (space == 2)
 		return (1);
 	// sinon erreur
 	else
@@ -80,7 +80,6 @@ void		pRead(t_data *d, char *l)
 
 int			pAnts(char	*line, char	*verif, int ants, size_t len)
 {
-	// saute les commentaires en entré de fichiers et régle verif
 	while (ft_strdel(&line) && (get_next_line(0, &line)) > 0)
 	{
 		if (!ft_strcmp(line, "##start") || !ft_strcmp(line, "##end"))
@@ -97,7 +96,7 @@ int			pAnts(char	*line, char	*verif, int ants, size_t len)
 		eExit2(1, (t_data *)NULL, line);
 	else if (len == 10 && ft_atoimax(line) > INT_MAX)
 		eExit2(1, (t_data *)NULL, line);
-	// pour gagner des ligne on stock tte suite ants et on free
+	// on stock tte suite ants et on free
 	ants = (line && (!*verif)) ? ft_atoi(line) : -1;
 	ft_strdel(&line);
 	// on return ants ou on stop si erreur
@@ -106,9 +105,7 @@ int			pAnts(char	*line, char	*verif, int ants, size_t len)
 
 void		pRun(t_data *d)
 {
-	// parse le nombre de fourmis
 	d->ants = pAnts((char *)NULL, (char *)NULL, -1, 0);
-	// parse le fichier
 	pRead(d, (char *)NULL);
 	if (!d->start || !d->end)
 		eExit(1, d);

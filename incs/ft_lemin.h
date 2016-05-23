@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:50:14 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/20 17:57:35 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/23 16:29:43 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int			eExit2(int error, t_data *d, char *del);
 
 void		pRun(t_data *d);
 
-void		dBox(t_data *d, char *l, int i, char type);
+void		dBox(t_data *d, char *l, int x, char type);
 int			dLink(t_data *d, char *l, int i, int j);
 
 void		fDataBox(t_data *d);
