@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:50:11 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/23 17:17:12 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/23 18:58:02 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ int			pAnts(char	*line, char	*verif, int ants, size_t len)
 void		pRun(t_data *d)
 {
 	d->ants = pAnts((char *)NULL, (char *)NULL, -1, 0);
+	d->start = NULL;
+	d->end = NULL;
 	pRead(d, (char *)NULL);
 	if (!d->start || !d->end)
 		eExit(1, d);

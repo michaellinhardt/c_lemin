@@ -1,7 +1,7 @@
 # [ LEM'IN ] :ant: :ant: :ant: :ant: :ant:
 ## Path finding algo
 - Langage: C
-- see docs/pushswap.pdf for more
+- see docs/lemin.pdf for more
 - Date: may 2016
 
 ## About
