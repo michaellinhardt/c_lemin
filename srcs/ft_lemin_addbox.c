@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 16:43:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/24 16:09:24 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/24 16:19:00 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,39 @@ int			dBoxAdd(t_data *d, char *name, int x, int y)
 		d->start = new;
 	else if (d->i == 2)
 		d->end = new;
+	new->id = d->idbox++;
 	new->x = x;
 	new->y = y;
 	return (0);
 }
+
+// int			dBoxAdd(t_data *d, char *name, int x, int y)
+// {
+// 	t_pBox	*new;
+// 	t_pBox	*lst;
+//
+// 	if (!(new = (t_pBox *)ft_memalloc(sizeof(t_pBox))))
+// 		return (1);
+// 	if (!d->box)
+// 		d->box = new;
+// 	else
+// 	{
+// 		lst = d->box;
+// 		while (lst->n)
+// 			lst = lst->n;
+// 		lst->n = new;
+// 	}
+// 	new->links = NULL;
+// 	new->n = NULL;
+// 	new->name = name;
+// 	if ((new->type = d->i) == 1)
+// 		d->start = new;
+// 	else if (d->i == 2)
+// 		d->end = new;
+// 	new->x = x;
+// 	new->y = y;
+// 	return (0);
+// }
 
 int			dBoxCoord(t_data *d, char *l, char c, int len)
 {

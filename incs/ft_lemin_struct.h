@@ -6,12 +6,19 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:28:15 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/23 16:57:19 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/24 17:13:37 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LEMIN_STRUCT_H
 # define FT_LEMIN_STRUCT_H
+
+typedef struct			s_roads
+{
+	char				*name;
+	int					id;
+	struct s_roads		*n;
+}						t_roads;
 
 typedef struct			s_pBoxLink
 {
@@ -22,6 +29,7 @@ typedef struct			s_pBoxLink
 typedef struct			s_pBox
 {
 	char				*name;
+	int					id;
 	char				type;
 	int					size;
 	int					x;
@@ -49,6 +57,7 @@ typedef struct			s_data
 {
 	int					i;
 	char				ret;
+	int					idbox;
 	int					ants;
 	t_pBox				*box;
 	t_pBox				*start;
