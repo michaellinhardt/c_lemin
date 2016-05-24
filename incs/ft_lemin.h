@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:50:14 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/23 16:29:43 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/24 16:07:49 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void		pRun(t_data *d);
 
 void		dBox(t_data *d, char *l, int x, char type);
 int			dLink(t_data *d, char *l, int i, int j);
+
+void		sSize(t_data *d, t_pBox *start, t_pBox *end);
 
 void		fDataBox(t_data *d);
 

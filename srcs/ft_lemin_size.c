@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lemin.c                                         :+:      :+:    :+:   */
+/*   ft_lemin_size.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/04 01:49:54 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/24 11:28:44 by mlinhard         ###   ########.fr       */
+/*   Created: 2016/05/24 11:25:02 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/05/24 11:29:19 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lemin.h"
 
-int		main(void)
+void	sSize(t_data *d, t_pBox *start, t_pBox *end)
 {
-	t_data		data;
-
-	ft_bzero(&data, sizeof(t_data));
-	pRun(&data);
-	sSize(&data, data.start, data.end);
-	fDataBox(&data);
-	return (0);
+	(void)d;
+	ft_printf("start: %s -> %s\n", start->name, end->name);
 }
