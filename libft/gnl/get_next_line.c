@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:53:28 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 19:45:30 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/25 23:06:20 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static t_gnl	*gnl_choose(int fd, t_gnl *root2)
 
 	if (fd == -10)
 		return (root);
+	if (fd == -50)
+		return ((root = (t_gnl *)NULL));
 	if (fd == -20)
 		return (root = root2);
 	if (!(root = gnl_create(root, fd)))
@@ -99,6 +101,7 @@ static int		gnl_free(void)
 	ft_strdel(&root->s);
 	ft_strdel(&root->t);
 	ft_memdel((void **)&root);
+	gnl_choose(-50, NULL);
 	return (0);
 }
 

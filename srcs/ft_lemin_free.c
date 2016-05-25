@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 20:02:45 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/25 19:32:11 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/25 22:47:28 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	fRoadsLast(t_data *d)
 	if (del->score == 0)
 	{
 		ft_memdel((void **)&del->tab);
-		d->roads = del->n;
+		d->roads = (del->n) ? del->n : NULL;
 		ft_strdel(&del->u);
 		ft_memdel((void **)&del);
 	}

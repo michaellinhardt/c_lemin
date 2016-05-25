@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:49:54 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/25 19:42:23 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/25 23:00:35 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,19 @@ int		main(void)
 	t_data		data;
 	char		*used;
 
+
+	get_next_line(0, &used);
+	get_next_line(-10, NULL);
+	get_next_line(-10, NULL);
+	ft_strdel(&used);
+	exit (0);
+
 	ft_bzero(&data, sizeof(t_data));
 	pRun(&data);
+	get_next_line(-10, NULL);
+	get_next_line(-10, NULL);
+	get_next_line(-10, NULL);
+	exit (0);
 	if (!(used = ft_strnew((data.idbox + 1))))
 		eExit(1, &data);
 	data.roads = NULL;
@@ -26,6 +37,10 @@ int		main(void)
 	iRoads(&data, (t_roads *)NULL, (t_pBox **)NULL, (char *)NULL);
 	rRoads(&data, data.start, used, 0);
 	fRoadsLast(&data);
+	if (!data.roads)
+		eExit2(1, &data, used);
+
+
 
 // DEBUG LISTING DES BOX
 ft_printf("fourmis: %d\n", data.ants);
@@ -44,21 +59,25 @@ int i; t_pBoxLink *link; t_pBox *box = data.box; while (box)
 
 
 // DEBUG LIST CHEMIN
-t_roads *roads = data.roads; int j;
-while (roads)
+if (data.roads)
 {
-	ft_printf("(ID. %2d)[Poid. %2d] ", roads->id, roads->score);
-	j = -1;
-	while (roads->tab[++j])
-		ft_printf("-> (%d)%s ", roads->tab[j]->id, roads->tab[j]->name);
-	ft_printf("\n%18s", "used box id: ");
-	i = -1;
-	while (++i < (data.idbox + 1))
-		if (roads->u[i] == 1)
-			ft_printf("[%d] ", i);
-	ft_printf("\n\n");
-	roads = roads->n;
-}
+	t_roads *roads = data.roads; int j;
+	while (roads)
+	{
+		ft_printf("(ID. %2d)[Poid. %2d] ", roads->id, roads->score);
+		j = -1;
+		while (roads->tab[++j])
+			ft_printf("-> (%d)%s ", roads->tab[j]->id, roads->tab[j]->name);
+		ft_printf("\n%18s", "used box id: ");
+		i = -1;
+		while (++i < (data.idbox + 1))
+			if (roads->u[i] == 1)
+				ft_printf("[%d] ", i);
+		ft_printf("\n\n");
+		roads = roads->n;
+	}
+} else { ft_printf("pas de route\n"); }
+
 
 
 
