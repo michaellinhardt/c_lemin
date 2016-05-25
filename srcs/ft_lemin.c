@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:49:54 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/25 23:00:35 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/25 23:08:15 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,8 @@ int		main(void)
 	t_data		data;
 	char		*used;
 
-
-	get_next_line(0, &used);
-	get_next_line(-10, NULL);
-	get_next_line(-10, NULL);
-	ft_strdel(&used);
-	exit (0);
-
 	ft_bzero(&data, sizeof(t_data));
 	pRun(&data);
-	get_next_line(-10, NULL);
-	get_next_line(-10, NULL);
-	get_next_line(-10, NULL);
-	exit (0);
 	if (!(used = ft_strnew((data.idbox + 1))))
 		eExit(1, &data);
 	data.roads = NULL;
