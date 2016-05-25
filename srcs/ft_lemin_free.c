@@ -6,11 +6,25 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 20:02:45 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/25 01:55:25 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/25 19:32:11 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lemin.h"
+
+void	fRoadsLast(t_data *d)
+{
+	t_roads		*del;
+
+	del = d->roads;
+	if (del->score == 0)
+	{
+		ft_memdel((void **)&del->tab);
+		d->roads = del->n;
+		ft_strdel(&del->u);
+		ft_memdel((void **)&del);
+	}
+}
 
 void	fDataLink(t_pBoxLink *lst)
 {
@@ -37,6 +51,7 @@ void	fDataRoads(t_data *d)
 			del = lst;
 			lst = lst->n;
 			ft_memdel((void **)&del->tab);
+			ft_strdel(&del->u);
 			ft_memdel((void **)&del);
 		}
 	}

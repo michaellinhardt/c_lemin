@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:50:14 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/25 02:03:59 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/25 19:30:09 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ void		dBox(t_data *d, char *l, int x, char type);
 int			dLink(t_data *d, char *l, int i, int j);
 
 void		rRoads(t_data *d, t_pBox *box, char *used, int i);
-int			iRoads(t_data *d, t_roads *new, t_pBox **tab);
+int			iRoads(t_data *d, t_roads *new, t_pBox **tab, char *u);
 
 void		fDataBox(t_data *d);
+void		fRoadsLast(t_data *d);
 
 #endif

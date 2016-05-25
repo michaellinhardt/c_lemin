@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:28:15 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/25 01:55:25 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/25 19:26:50 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct			s_roads
 {
 	int					id;
 	int					score;
+	char				*u;
 	t_pBox				**tab;
 	struct s_roads		*n;
 }						t_roads;

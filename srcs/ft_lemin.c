@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:49:54 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/25 16:39:04 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/25 19:42:00 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int		main(void)
 		eExit(1, &data);
 	data.roads = NULL;
 	data.i = 0;
-	iRoads(&data, (t_roads *)NULL, (t_pBox **)NULL);
+	iRoads(&data, (t_roads *)NULL, (t_pBox **)NULL, (char *)NULL);
 	rRoads(&data, data.start, used, 0);
-
+	fRoadsLast(&data);
 
 // DEBUG LISTING DES BOX
 ft_printf("fourmis: %d\n", data.ants);
@@ -50,8 +50,13 @@ while (roads)
 	ft_printf("(ID. %2d)[Poid. %2d] ", roads->id, roads->score);
 	j = -1;
 	while (roads->tab[++j])
-		ft_printf("-> %s ", roads->tab[j]->name);
-	ft_printf("\n");
+		ft_printf("-> (%d)%s ", roads->tab[j]->id, roads->tab[j]->name);
+	ft_printf("\n%18s", "used box id: ");
+	i = -1;
+	while (++i < (data.idbox + 1))
+		if (roads->u[i] == 1)
+			ft_printf("[%d] ", i);
+	ft_printf("\n\n");
 	roads = roads->n;
 }
 
