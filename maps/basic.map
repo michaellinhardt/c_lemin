@@ -8,6 +8,8 @@
 5 9 3
 6 1 5
 7 4 8
+# SOLUTION POUR REC LES CHEMIN!!!
+# UNE LISTE CHAINé DE X MAILLON POUR X = NBBOX
 ##end
 0 9 5
 0-4
@@ -23,3 +25,4 @@
 7-2
 7-4
 6-5
+1-0

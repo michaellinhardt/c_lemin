@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:50:11 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/24 16:20:01 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/25 03:08:36 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,24 +108,9 @@ void		pRun(t_data *d)
 	d->ants = pAnts((char *)NULL, (char *)NULL, -1, 0);
 	d->start = NULL;
 	d->end = NULL;
+	d->idbox = 1;
 	pRead(d, (char *)NULL);
 	if (!d->start || !d->end)
 		eExit(1, d);
-
-// DEBUG LISTING DES BOX
-	ft_printf("fourmis: %d\n", d->ants);
-	int i; t_pBoxLink *link; t_pBox *box = d->box; while (box)
-	{ ft_printf("(%d)[n%d, %s] %d %d\n", box->type, box->id, box->name, box->x, box->y);
-		if (box->links)
-		{
-			link = box->links;
-			i = 0; while (link && ++i)
-			{
-				ft_printf("tube %d: %s\n", i, (link->link)->name);
-				link = link->n;
-			}
-		} box = box->n; }
-
-
 	get_next_line(-10, NULL);
 }

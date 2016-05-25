@@ -6,34 +6,53 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/24 11:25:02 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/24 17:56:29 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/25 03:19:23 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lemin.h"
 
-t_roads		*rRoads(t_data *d, t_pBox *box, char *used, t_pBoxLink *lnk)
+int			iRoads(t_data *d, t_roads *new, t_pBox **tab)
 {
-	// pour enregistrer le chemin
-	t_roads		*road = NULL; d->idbox += 0; (void)road;
+	int		size;
 
-	// écris cette box comme utilisé
+	size = (d->idbox + 3);
+	if (!(new = (t_roads *)ft_memalloc(sizeof(t_roads))))
+		return (1);
+	if (!(tab = (t_pBox **)ft_memalloc(sizeof(t_pBox *) * (size))))
+		return (1);
+	if (d->roads)
+		tab = ft_memcpy(tab, d->roads->tab, (sizeof(t_pBox *) * (size)));
+	else
+		while (size--)
+			tab[size] = (t_pBox *)NULL;
+	new->tab = tab;
+	new->n = d->roads;
+	new->id = ++d->i;
+	d->roads = new;
+	return (0);
+}
+
+void		rRoads(t_data *d, t_pBox *box, char *used, int i)
+{
+	t_pBoxLink *lnk;
+
+	lnk = box->links;
 	used[box->id] = 1;
-	ft_printf("RECURSION START SUR: [%s]\n", box->name);
+	d->roads->tab[i] = box;
 	while (lnk)
 	{
 		if (lnk->link->type == 2)
 		{
-			ft_printf("ARRIVé SUR: [%s]\n\n", lnk->link->name);
+			d->roads->score = (i + 1);
+			d->roads->tab[(i + 1)] = lnk->link;
+			d->roads->tab[(i + 2)] = NULL;
+			iRoads(d, (t_roads *)NULL, (t_pBox **)NULL);
 		}
 		else if (!used[lnk->link->id])
-		{
-			ft_printf("*Relance: [%s] vers [%s]\n", box->name, lnk->link->name);
-			rRoads(d, lnk->link, used, lnk->link->links);
-		}
+			rRoads(d, lnk->link, used, (i + 1));
 		lnk = lnk->n;
 	}
+	d->roads->tab[i] = (t_pBox *)NULL;
 	used[box->id] = 0;
-	// ft_printf("RECURSION OVER SUR: [%s]\n", box->name);
-	return ((t_roads *)1);
 }

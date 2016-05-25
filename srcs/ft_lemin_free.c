@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 20:02:45 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/23 17:16:55 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/25 01:55:25 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,24 @@ void	fDataLink(t_pBoxLink *lst)
 		del = lst;
 		lst = lst->n;
 		ft_memdel((void **)&del);
+	}
+}
+
+void	fDataRoads(t_data *d)
+{
+	t_roads		*lst;
+	t_roads		*del;
+
+	if (d && d->roads)
+	{
+		lst = d->roads;
+		while (lst)
+		{
+			del = lst;
+			lst = lst->n;
+			ft_memdel((void **)&del->tab);
+			ft_memdel((void **)&del);
+		}
 	}
 }
 
@@ -42,5 +60,5 @@ void	fDataBox(t_data *d)
 			ft_memdel((void **)&del);
 		}
 	}
-
+	fDataRoads(d);
 }
