@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:49:54 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/25 23:08:15 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/26 03:30:18 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,20 @@ int		main(void)
 	t_data		data;
 	char		*used;
 
+	pAscii();
 	ft_bzero(&data, sizeof(t_data));
 	pRun(&data);
 	if (!(used = ft_strnew((data.idbox + 1))))
-		eExit(1, &data);
+		eExit(1, &data, "Can't malloc.");
 	data.roads = NULL;
 	data.i = 0;
 	iRoads(&data, (t_roads *)NULL, (t_pBox **)NULL, (char *)NULL);
 	rRoads(&data, data.start, used, 0);
 	fRoadsLast(&data);
 	if (!data.roads)
-		eExit2(1, &data, used);
+		eExit2(1, &data, used, "No roads.");
+	oData(&data);
+	pAsciiClose();
 
 
 
@@ -66,7 +69,6 @@ if (data.roads)
 		roads = roads->n;
 	}
 } else { ft_printf("pas de route\n"); }
-
 
 
 

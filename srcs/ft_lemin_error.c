@@ -6,27 +6,35 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:09:44 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/25 22:50:40 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/26 04:26:03 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lemin.h"
 
-int		eExit(int error, t_data *d)
+int		eExit(int error, t_data *d, char *msg)
 {
-	get_next_line(-10, NULL);
+	if (error == 1)
+		;
+	oData(d);
 	fDataBox(d);
-	if (error == 1 && ft_printf("ERROR"))
-		exit(0);
+	ft_printf("\e[93m  | \e[31m%s%-62s\e[93m  |\n", "🚨  Error: ", msg);
+	pAsciiClose();
+	get_next_line(-10, NULL);
+	exit(0);
 	return (1);
 }
 
-int		eExit2(int error, t_data *d, char *del)
+int		eExit2(int error, t_data *d, char *del, char *msg)
 {
-	get_next_line(-10, NULL);
+	if (error == 1)
+		;
+	oData(d);
 	ft_strdel(&del);
 	fDataBox(d);
-	if (error == 1 && ft_printf("ERROR"))
-		exit(0);
+	ft_printf("\e[93m  | \e[31m%s%-62s\e[93m  |\n", "🚨  Error: ", msg);
+	pAsciiClose();
+	get_next_line(-10, NULL);
+	exit(0);
 	return (1);
 }

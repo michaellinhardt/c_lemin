@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 20:02:45 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/25 22:47:28 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/26 02:47:53 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	fRoadsLast(t_data *d)
 		d->roads = (del->n) ? del->n : NULL;
 		ft_strdel(&del->u);
 		ft_memdel((void **)&del);
+		d->nbroads--;
 	}
 }
 

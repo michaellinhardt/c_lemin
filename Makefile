@@ -15,6 +15,8 @@ ft_lemin_prun \
 ft_lemin_free \
 ft_lemin_addlink \
 ft_lemin_roads \
+ft_lemin_ascii \
+ft_lemin_output \
 ft_lemin_addbox
 
 SRC := $(addprefix $(SRC_DIR)/, $(addsuffix .$(LANGAGE), $(LIST)))
@@ -59,7 +61,7 @@ leaks: $(NAME) -leaks
 #leaks: test
 
 -leaks:
-	@-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) < maps/test9
+	@-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) < maps/test1
 
 re: fclean libft $(NAME)
 

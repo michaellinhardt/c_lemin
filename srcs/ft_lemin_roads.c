@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/24 11:25:02 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/25 19:34:26 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/26 02:37:11 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int			iRoads(t_data *d, t_roads *new, t_pBox **tab, char *u)
 	new->n = d->roads;
 	new->id = ++d->i;
 	d->roads = new;
+	d->nbroads++;
 	return (0);
 }
 

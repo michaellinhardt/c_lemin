@@ -26,20 +26,18 @@ Working on how implementing a faster code. Below is a todo list to help:
 ## repo map
 | repo path | description |
 | ------------- | ------------- |
-| docs/lemin.pdf		 | project description in french	 |
-| incs/					 | headers location					 |
-| libft/				 | libft.a project <a href="https://github.com/nesthub/c_libft" target="_blank">here</a>	 |
-| srcs/					 | sources							 |
-| auteur				 | 42 login file					 |
+| docs/lemin.pdf	 | project description in french |
+| incs/				 | headers location				 |
+| libft/			 | libft.a project <a href="https://github.com/nesthub/c_libft" target="_blank">here</a> |
+| srcs/				 | sources						 |
+| auteur			 | 42 login file				 |
 
 ## Nameplate
 | nameplate | description |
 | ------------- | ------------- |
-| pFunctionname();	 | 		parsing function		 |
-| dFunctionname();	 | 		data set function		 |
-| fFunctionname();	 | 		free function			 |
-| rFunctionname();	 | 		recursive function		 |
-| oFunctionname();	 | 		options function		 |
-| iFunctionname();	 | 		init function			 |
-| sFunctionname();	 | 		structure function		 |
-| eFunctionname();	 | 		error function			 |
+| parsing function | pRun, pAnts, pRead.. |
+| data set function | dBox, dBoxCheck, dBoxAdd.. |
+| free function	 | fDataBox, fDataRoads.. |
+| recursive function | rRoads, rCouple |
+| error function | eExit, eExit2 |
+| output function | oData |
