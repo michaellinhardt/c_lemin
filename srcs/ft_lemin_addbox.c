@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 16:43:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/26 03:21:06 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/26 06:31:55 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,13 @@ void		dBox(t_data *d, char *l, int x, char type)
 
 	d->i = -1;
 	while (l[++d->i] && l[d->i] != ' ')
-		if (l[d->i] == '-')
+		if (l[d->i] == '-' && !pAsciiMsg(l, 1))
 			eExit2(1, d, l, "Dont use - in box name please.");
 	if (l[d->i])
 		name = ft_strsub(l, 0, d->i);
-	else
-		eExit2(1, d, l, "Missing box informations.");
-	if (d->i == 0)
+	else if (!pAsciiMsg(l, 1))
+		eExit2(1, d, l, "Missing box name.");
+	if (d->i == 0 && !pAsciiMsg(l, 1))
 		eExit2(1, d, l, "You forget the box name.");
 	d->ret = 0;
 	x = dBoxCoord(d, l, ' ', 0);
@@ -94,7 +94,9 @@ void		dBox(t_data *d, char *l, int x, char type)
 	d->i = type;
 	if ((d->ret == -1) || dBoxCheck(d, name, x, y) || dBoxAdd(d, name, x, y))
 	{
+		pAsciiMsg(l, 1);
 		ft_strdel(&name);
 		eExit2(1, d, l, "Bad box informations.");
 	}
+	pAsciiMsg(l, 2);
 }

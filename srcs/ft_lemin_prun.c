@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:50:11 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/26 03:36:15 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/26 06:04:10 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char		pType(char *l)
 
 int			pReadWhile(t_data *d, char *l, t_pRead *s)
 {
+	oMap(l, s, d);
 	((!*l || *l == 'L') &&
 	!s->step) ? eExit2(1, d, l, "Line empty or start with L.") : 1;
 	if (!ft_strcmp(l, "##start") && (s->type = 1))
@@ -78,6 +79,7 @@ int			pAnts(t_data *d, char *line, char *verif, int ants)
 	len = 0;
 	while (ft_strdel(&line) && (get_next_line(0, &line)) > 0)
 	{
+		oAnts(line);
 		if (!ft_strcmp(line, "##start") || !ft_strcmp(line, "##end"))
 			eExit2(1, d, line, "Start/end before ants.");
 		if (*line != '#' && (verif = line))

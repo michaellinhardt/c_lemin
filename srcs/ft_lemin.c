@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:49:54 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/26 03:30:18 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/26 04:48:52 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int		main(void)
 	pAscii();
 	ft_bzero(&data, sizeof(t_data));
 	pRun(&data);
+	pAsciiClose();
+	pAsciiOpen();
 	if (!(used = ft_strnew((data.idbox + 1))))
 		eExit(1, &data, "Can't malloc.");
 	data.roads = NULL;

@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:50:14 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/26 03:06:54 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/26 06:12:29 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 int			eExit(int error, t_data *d, char *msg);
 int			eExit2(int error, t_data *d, char *del, char *msg);
 
+char		pType(char *l);
 void		pRun(t_data *d);
 
 void		dBox(t_data *d, char *l, int x, char type);
@@ -33,9 +34,12 @@ void		fDataBox(t_data *d);
 void		fRoadsLast(t_data *d);
 
 void		pAscii(void);
+int			pAsciiMsg(char *msg, int color);
 void		pAsciiClose(void);
 void		pAsciiOpen(void);
 
+int			oAnts(char *line);
 void		oData(t_data *d);
+void		oMap(char *l, t_pRead *s, t_data *d);
 
 #endif
