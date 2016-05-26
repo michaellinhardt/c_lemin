@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 16:43:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/26 06:31:55 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/26 07:02:45 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,17 @@ int			dBoxCoord(t_data *d, char *l, char c, int len)
 	return ((int)icoord);
 }
 
+void		dBoxOutput(char type, char *l)
+{
+	if (type == 0)
+		pAsciiMsg(l, 2);
+	else if (type == 1)
+		pAsciiMsg(l, 8);
+	else if (type == 2)
+		pAsciiMsg(l, 9);
+
+}
+
 void		dBox(t_data *d, char *l, int x, char type)
 {
 	int		y;
@@ -98,5 +109,5 @@ void		dBox(t_data *d, char *l, int x, char type)
 		ft_strdel(&name);
 		eExit2(1, d, l, "Bad box informations.");
 	}
-	pAsciiMsg(l, 2);
+	dBoxOutput(type, l);
 }
