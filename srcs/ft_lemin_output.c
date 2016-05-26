@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 02:14:44 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/26 06:47:49 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/26 23:52:02 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	oData(t_data *d)
 	 " 🏠  End: ", ((d->end) ? d->end->name : "unknow"));
 	ft_printf("\e[93m  | \e[39m%-70s%5d\e[93m  |\e[39m\n",
 	 " 🛤  Chemins valide: ", d->nbroads);
+	ft_printf("\e[93m  | \e[39m%-70s%5d\e[93m  |\e[39m\n",
+	 " 🛤  Chemins utilisables: ", d->roadsmax);
 	pAsciiClose();
 	pAsciiOpen();
 }

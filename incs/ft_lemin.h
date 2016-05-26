@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:50:14 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/26 06:12:29 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/26 23:52:23 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ void		pAsciiOpen(void);
 int			oAnts(char *line);
 void		oData(t_data *d);
 void		oMap(char *l, t_pRead *s, t_data *d);
+
+int			iCouples(t_data *d);
 
 #endif

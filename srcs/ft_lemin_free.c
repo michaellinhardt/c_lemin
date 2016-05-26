@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 20:02:45 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/26 02:47:53 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 01:33:20 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,17 @@ void	fDataRoads(t_data *d)
 	}
 }
 
+void	fDataCouples(t_couple **ptr, t_couple *del, t_couple *lst)
+{
+	while (lst)
+	{
+		del = lst;
+		lst = lst->n;
+		ft_memdel((void **)&del);
+	}
+	(*ptr) = NULL;
+}
+
 void	fDataBox(t_data *d)
 {
 	t_pBox		*lst;
@@ -77,4 +88,8 @@ void	fDataBox(t_data *d)
 		}
 	}
 	fDataRoads(d);
+	if (d->couples)
+		fDataCouples(&d->couples, (t_couple *)NULL, d->couples);
+	if (d->solution)
+		fDataCouples(&d->solution, (t_couple *)NULL, d->solution);
 }

@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:28:15 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/26 03:31:10 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 01:21:29 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ typedef struct			s_roads
 	struct s_roads		*n;
 }						t_roads;
 
+typedef struct			s_couple
+{
+	struct s_roads		*r;
+	struct s_couple		*n;
+	struct s_couple		*p;
+}						t_couple;
+
 typedef struct			t_pRead
 {
 	int					i;
@@ -62,6 +69,9 @@ typedef struct			s_data
 	int					idbox;
 	int					ants;
 	int					nbroads;
+	int					roadsmax;
+	t_couple			*solution;
+	t_couple			*couples;
 	char				*name;
 	t_roads				*roads;
 	t_pBox				*box;

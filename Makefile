@@ -17,6 +17,7 @@ ft_lemin_addlink \
 ft_lemin_roads \
 ft_lemin_ascii \
 ft_lemin_output \
+ft_lemin_couples \
 ft_lemin_addbox
 
 SRC := $(addprefix $(SRC_DIR)/, $(addsuffix .$(LANGAGE), $(LIST)))

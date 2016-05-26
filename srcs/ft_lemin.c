@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:49:54 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/26 07:12:39 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 01:24:23 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int		main(void)
 	pRun(&data);
 	if (!(used = ft_strnew((data.idbox + 1))))
 		eExit(1, &data, "Can't malloc.");
+	data.couples = NULL;
+	data.solution = NULL;
 	data.roads = NULL;
 	data.i = 0;
 	iRoads(&data, (t_roads *)NULL, (t_pBox **)NULL, (char *)NULL);
@@ -29,11 +31,11 @@ int		main(void)
 	fRoadsLast(&data);
 	if (!data.roads)
 		eExit2(1, &data, used, "No roads.");
+	iCouples(&data);
 	pAsciiClose();
 	pAsciiOpen();
 	oData(&data);
 	pAsciiClose();
-
 
 
 // // DEBUG LISTING DES BOX
