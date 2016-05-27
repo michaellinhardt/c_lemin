@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:50:11 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/26 07:11:05 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 18:13:01 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int			pants(t_data *d, char *line, char *verif, int ants)
 		if (!ft_strcmp(line, "##start") || !ft_strcmp(line, "##end"))
 			eexit2(1, d, line, "Start/end before ants.");
 		if (*line != '#' && (verif = line))
-			break;
+			break ;
 	}
 	if (!line)
 		eexit2(1, d, line, "Can't read input map.");

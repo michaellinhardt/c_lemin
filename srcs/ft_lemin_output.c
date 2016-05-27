@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 02:14:44 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 16:53:59 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 18:11:22 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		omap(char *l, t_pride *s, t_data *d)
 		!ft_strcmp(l, "##stop"))
 		pasciimsg(l, 4);
 	else if (l[0] && l[0] == '#' && l[1] && l[1] == '#')
-	 	pasciimsg(l, 3);
+		pasciimsg(l, 3);
 	else if (l[0] && l[0] == '#')
 		pasciimsg(l, 5);
 }
@@ -69,19 +69,19 @@ void		omap(char *l, t_pride *s, t_data *d)
 void		odata(t_data *d)
 {
 	ft_printf("\e[93m  | \e[39m%-70s%5d\e[93m  |\e[39m\n",
-	 " 🐛  Fourmis: ", d->ants);
+		" 🐛  Fourmis: ", d->ants);
 	ft_printf("\e[93m  | \e[39m%-70s%5d\e[93m  |\e[39m\n",
-	 " 🗃  Box: ", d->idbox);
+		" 🗃  Box: ", d->idbox);
 	ft_printf("\e[93m  | \e[39m%-40s%35s\e[93m  |\e[39m\n",
-	 " 🏁  Start: ", ((d->start) ? d->start->name : "unknow"));
+		" 🏁  Start: ", ((d->start) ? d->start->name : "unknow"));
 	ft_printf("\e[93m  | \e[39m%-40s%35s\e[93m  |\e[39m\n",
-	 " 🏠  End: ", ((d->end) ? d->end->name : "unknow"));
-	 if (d->idbox <= 100)
+		" 🏠  End: ", ((d->end) ? d->end->name : "unknow"));
+	if (d->idbox <= 100)
 	{
 		ft_printf("\e[93m  | \e[39m%-70s%5d\e[93m  |\e[39m\n",
-	 	" 🛤  Chemins valide: ", d->nbroads);
+			" 🛤  Chemins valide: ", d->nbroads);
 		ft_printf("\e[93m  | \e[39m%-70s%5d\e[93m  |\e[39m\n",
-	 	" 🛤  Chemins utilisables: ", d->roadsmax);
+			" 🛤  Chemins utilisables: ", d->roadsmax);
 	}
 	pasciiclose();
 	pasciiopen(0);
@@ -89,8 +89,8 @@ void		odata(t_data *d)
 
 void		printcouples(t_couple *lst)
 {
-	t_roads *road;
-	int i;
+	t_roads	*road;
+	int		i;
 
 	while (lst)
 	{

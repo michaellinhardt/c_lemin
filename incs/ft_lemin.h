@@ -49,8 +49,8 @@ int			icouples(t_data *d);
 
 void		rcouples(t_data *d, int slot, t_couple *lst);
 
-void		rSize(t_data *d, int s, t_pBoxLink *lnk, t_pBoxLink *root);
-void		iSizeRoad(t_data *d, t_pBox *next, t_pBoxLink *lnk, t_roads *road);
+void		rsize(t_data *d, int s, t_pBoxLink *lnk, t_pBoxLink *root);
+void		isizeRoad(t_data *d, t_pBox *next, t_pBoxLink *lnk, t_roads *road);
 
 void		oprint(t_data *d, t_couple *cpl, t_roads *rds, int f);
 

@@ -6,13 +6,11 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/27 11:08:28 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 17:31:10 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 18:14:25 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lemin.h"
-
-
 
 int			dprint(t_data *d, t_couple *sol, t_couple *new, t_couple *prev)
 {
@@ -93,7 +91,7 @@ void		oprint(t_data *d, t_couple *cpl, t_roads *rds, int f)
 			d->i = (rds->score);
 			while (--d->i > -1)
 				(rds->tab[d->i] && rds->tab[d->i]->ant) ? oprintmove(d,
-					 rds->tab, 1, 0) : 1;
+					rds->tab, 1, 0) : 1;
 			if (d->ants-- > 0)
 				oprintmove(d, rds->tab, 2, ++f);
 			cpl = cpl->n;
@@ -102,6 +100,6 @@ void		oprint(t_data *d, t_couple *cpl, t_roads *rds, int f)
 	}
 	pasciiopen(0);
 	ft_printf("\e[93m  | \e[39m%-40s%35d\e[93m  |\e[39m\n",
-	 " 🏁  Nombre de tour: ", d->rendmax);
+		" 🏁  Nombre de tour: ", d->rendmax);
 	pasciiclose();
 }

@@ -33,8 +33,8 @@ void	ialgo(t_data *data, char *used)
 		data->roadsmax = 1;
 		data->start->sizeok = 1;
 		data->end->sizeok = 1;
-		rSize(data, 1, data->end->links, data->end->links);
-		iSizeRoad(data, data->start, data->start->links, data->roads);
+		rsize(data, 1, data->end->links, data->end->links);
+		isizeRoad(data, data->start, data->start->links, data->roads);
 		icouplesstruct(data, (t_couple *)NULL, 0, &data->solution);
 		data->solution->r = data->roads;
 	}

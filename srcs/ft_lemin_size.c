@@ -6,13 +6,13 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/27 09:28:40 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 16:53:03 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 18:14:54 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lemin.h"
 
-void	rSize(t_data *d, int s, t_pBoxLink *lnk, t_pBoxLink *root)
+void	rsize(t_data *d, int s, t_pBoxLink *lnk, t_pBoxLink *root)
 {
 	while (lnk)
 	{
@@ -25,12 +25,12 @@ void	rSize(t_data *d, int s, t_pBoxLink *lnk, t_pBoxLink *root)
 	while (lnk)
 	{
 		if (lnk->link->sizeok == 0 && (lnk->link->sizeok = 1))
-			rSize(d, (s + 1), lnk->link->links, lnk->link->links);
+			rsize(d, (s + 1), lnk->link->links, lnk->link->links);
 		lnk = lnk->n;
 	}
 }
 
-void	iSizeRoad(t_data *d, t_pBox *next, t_pBoxLink *lnk, t_roads *road)
+void	isizeRoad(t_data *d, t_pBox *next, t_pBoxLink *lnk, t_roads *road)
 {
 	int			i;
 	int			s;
@@ -49,10 +49,10 @@ void	iSizeRoad(t_data *d, t_pBox *next, t_pBoxLink *lnk, t_roads *road)
 		{
 			if ((lnk->link == d->end && !(s = 0)) || (lnk->link->sizeok != -1 &&
 			lnk->link->size && lnk->link->size <= s && (s = lnk->link->size)))
-				{
-					lnk->link->sizeok = -1;
-					next = lnk->link;
-				}
+			{
+				lnk->link->sizeok = -1;
+				next = lnk->link;
+			}
 			lnk = lnk->n;
 		}
 	}

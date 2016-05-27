@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 16:57:03 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 09:03:57 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 18:09:58 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		dlinkadd(t_pBox *b1, t_pBox *b2, t_pBoxLink *l1)
 	}
 }
 
-int			dlinkverif(char n1[4096], char n2[4096], t_pBox	*lst, t_pBox *b1)
+int			dlinkverif(char n1[4096], char n2[4096], t_pBox *lst, t_pBox *b1)
 {
 	t_pBox		*b2;
 	t_pBoxLink	*l1;
