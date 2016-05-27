@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:50:14 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/26 23:52:23 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 10:26:31 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include "ft_lemin_struct.h"
 # include <limits.h>
 # include <fcntl.h>
+
+void		printCouples(t_couple *lst);
+
+
+
 
 int			eExit(int error, t_data *d, char *msg);
 int			eExit2(int error, t_data *d, char *del, char *msg);
@@ -42,6 +47,12 @@ int			oAnts(char *line);
 void		oData(t_data *d);
 void		oMap(char *l, t_pRead *s, t_data *d);
 
+void		iCouplesStruct(t_data *d, t_couple *new, int i, t_couple **ptr);
 int			iCouples(t_data *d);
+
+void		rCouples(t_data *d, int slot, t_couple *lst);
+
+void		rSize(t_data *d, int s, t_pBoxLink *lnk, t_pBoxLink *root);
+void		iSizeRoad(t_data *d, t_pBox *next, t_pBoxLink *lnk, t_roads *road);
 
 #endif

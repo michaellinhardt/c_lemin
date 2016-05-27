@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:28:15 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 01:21:29 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 09:54:03 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct			s_pBox
 	int					id;
 	char				type;
 	int					size;
+	int					sizeok;
 	int					x;
 	int					y;
 	struct s_pBox		*n;
@@ -42,6 +43,7 @@ typedef struct			s_roads
 
 typedef struct			s_couple
 {
+	int					score;
 	struct s_roads		*r;
 	struct s_couple		*n;
 	struct s_couple		*p;
@@ -51,12 +53,7 @@ typedef struct			t_pRead
 {
 	int					i;
 	char				j;
-	// type permet de déterminer le type de la ligne suivante
-	// 1 = start
-	// 2 = end
-	// 0 = box
 	char				type;
-	// Si start ou end est à 1 on à déjà enregistré une box début ou fin
 	char				start;
 	char				end;
 	char				step;
@@ -68,6 +65,8 @@ typedef struct			s_data
 	char				ret;
 	int					idbox;
 	int					ants;
+	int					rendmax;
+	int					tmax;
 	int					nbroads;
 	int					roadsmax;
 	t_couple			*solution;

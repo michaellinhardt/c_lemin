@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 16:57:03 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/23 17:10:03 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 09:03:57 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int			dLink(t_data *d, char *l, int i, int j)
 		n1[i] = l[i];
 	while (l[++i])
 		n2[++j] = l[i];
-	// ici on a une erreur, on stop le parsing et on démarre l'algo
 	if (dLinkVerif(n1, n2, d->box, (t_pBox *)NULL))
 		return (1);
 	return (0);

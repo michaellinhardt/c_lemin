@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 16:43:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/26 07:02:45 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 09:05:06 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int			dBoxAdd(t_data *d, char *name, int x, int y)
 		d->start = new;
 	else if (d->i == 2)
 		d->end = new;
+	new->size = 0;
+	new->sizeok = 0;
 	new->id = d->idbox++;
 	new->x = x;
 	new->y = y;

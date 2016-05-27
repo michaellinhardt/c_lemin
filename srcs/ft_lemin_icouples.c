@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lemin_couples.c                                 :+:      :+:    :+:   */
+/*   ft_lemin_icouples.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 23:20:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 01:33:07 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 06:57:37 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		iCouplesStruct(t_data *d, t_couple *new, int i, t_couple **ptr)
 	{
 		if (!(new = (t_couple *)ft_memalloc(sizeof(t_couple))))
 			eExit(1, d, "Cant malloc.");
-		new->r = d->roads;
+		new->r = NULL;
 		if (!(*ptr) && !(new->n = NULL))
 		{
 			new->p = NULL;
@@ -51,5 +51,7 @@ int			iCouples(t_data *d)
 	iMaxroads(d, 0, (t_pBoxLink *)NULL);
 	iCouplesStruct(d, (t_couple *)NULL, 0, &d->solution);
 	iCouplesStruct(d, (t_couple *)NULL, 0, &d->couples);
+	d->solution->score = INT_MAX;
+	rCouples(d, (d->roadsmax + 1), (t_couple *)NULL);
 	return (0);
 }

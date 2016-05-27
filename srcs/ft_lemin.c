@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:49:54 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 01:24:23 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 10:27:51 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,25 @@ int		main(void)
 	data.roads = NULL;
 	data.i = 0;
 	iRoads(&data, (t_roads *)NULL, (t_pBox **)NULL, (char *)NULL);
-	rRoads(&data, data.start, used, 0);
-	fRoadsLast(&data);
+	if (data.idbox <= -1)
+	{
+		rRoads(&data, data.start, used, 0);
+		fRoadsLast(&data);
+		iCouples(&data);
+	}
+	else
+	{
+		data.roadsmax = 1;
+		data.start->sizeok = 1;
+		data.end->sizeok = 1;
+		rSize(&data, 1, data.end->links, data.end->links);
+		iSizeRoad(&data, data.start, data.start->links, data.roads);
+		iCouplesStruct(&data, (t_couple *)NULL, 0, &data.solution);
+		data.solution->r = data.roads;
+	}
 	if (!data.roads)
 		eExit2(1, &data, used, "No roads.");
-	iCouples(&data);
+	printCouples(data.solution);
 	pAsciiClose();
 	pAsciiOpen();
 	oData(&data);
@@ -81,4 +95,25 @@ int		main(void)
 	ft_strdel(&used);
 	fDataBox(&data);
 	return (0);
+}
+
+void		printCouples(t_couple *lst)
+{
+	t_roads *road;
+	int i;
+
+	ft_printf("Couples actuel: \n");
+	while (lst)
+	{
+		if (lst->r)
+		{
+			ft_printf("Road %d (%d): ", lst->r->id, lst->r->score);
+			road = lst->r;
+			i = -1;
+			while (road->tab[++i])
+				ft_printf("[%s] ", road->tab[i]->name);
+			ft_printf("\n");
+		}
+		lst = lst->n;
+	}
 }
