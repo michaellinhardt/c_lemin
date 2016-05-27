@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 00:28:11 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 08:06:45 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 16:57:57 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		pAsciiMsg(char *msg, int color)
 	(color == 7) ? ft_putstr("\e[95m 🛤  ") : NULL;
 	(color == 8) ? ft_putstr("\e[36m 🏁  ") : NULL;
 	(color == 9) ? ft_putstr("\e[36m 🏠  ") : NULL;
-	ft_printf("%-68s\e[93m  |\n", msg);
+	ft_printf("%-69s\e[93m  |\n", msg);
 	return (0);
 }
 
@@ -33,10 +33,11 @@ void	pAsciiColor(void)
 	ft_putstr("\e[93m");
 }
 
-void	pAsciiOpen(void)
+void	pAsciiOpen(int i)
 {
 	pAsciiColor();
-	ft_printf("                                      |\n");
+	if (i != 0)
+		ft_printf("                                      |\n");
 	ft_printf("  ,-----------------------------------------------------------");
 	ft_printf("----------------.\e[39m\n");
 }

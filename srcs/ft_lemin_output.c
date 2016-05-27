@@ -6,13 +6,13 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 02:14:44 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 08:33:26 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 16:53:59 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lemin.h"
 
-int		oAnts(char *line)
+int			oAnts(char *line)
 {
 	size_t		len;
 	char		*verif;
@@ -38,7 +38,7 @@ int		oAnts(char *line)
 	return (0);
 }
 
-void	oMap(char *l, t_pRead *s, t_data *d)
+void		oMap(char *l, t_pRead *s, t_data *d)
 {
 	if (((!*l || *l == 'L') && !s->step) ||
 		((!ft_strcmp(l, "##start") && s->start)) ||
@@ -66,7 +66,7 @@ void	oMap(char *l, t_pRead *s, t_data *d)
 		pAsciiMsg(l, 5);
 }
 
-void	oData(t_data *d)
+void		oData(t_data *d)
 {
 	ft_printf("\e[93m  | \e[39m%-70s%5d\e[93m  |\e[39m\n",
 	 " 🐛  Fourmis: ", d->ants);
@@ -84,5 +84,26 @@ void	oData(t_data *d)
 	 	" 🛤  Chemins utilisables: ", d->roadsmax);
 	}
 	pAsciiClose();
-	pAsciiOpen();
+	pAsciiOpen(0);
+}
+
+void		printCouples(t_couple *lst)
+{
+	t_roads *road;
+	int i;
+
+	while (lst)
+	{
+		ft_printf("%5s", " ");
+		if (lst->r)
+		{
+			ft_printf("🛤  Road %3d: ", lst->r->id);
+			road = lst->r;
+			i = -1;
+			while (road->tab[++i])
+				ft_printf("[%s] ", road->tab[i]->name);
+			ft_printf("\n");
+		}
+		lst = lst->n;
+	}
 }

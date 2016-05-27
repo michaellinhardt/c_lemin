@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/27 01:44:06 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 10:20:22 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 11:37:09 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,4 @@ void		rCouples(t_data *d, int slot, t_couple *lst)
 		}
 		rCouplesTest(d, d->couples, (t_couple *)NULL);
 	}
-	ft_printf("SOLUTION:\n");
-	printCouples(d->solution);
-	ft_printf("Tour: %d\n", d->solution->score);
 }

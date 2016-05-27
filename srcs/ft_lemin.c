@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:49:54 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 10:27:51 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 16:54:49 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,16 @@ int		main(void)
 		eExit(1, &data, "Can't malloc.");
 	data.couples = NULL;
 	data.solution = NULL;
+	data.p = NULL;
 	data.roads = NULL;
 	data.i = 0;
 	iRoads(&data, (t_roads *)NULL, (t_pBox **)NULL, (char *)NULL);
-	if (data.idbox <= -1)
+	if (data.idbox <= 200)
 	{
 		rRoads(&data, data.start, used, 0);
 		fRoadsLast(&data);
+		if (!data.roads)
+			eExit2(1, &data, used, "No roads.");
 		iCouples(&data);
 	}
 	else
@@ -45,75 +48,16 @@ int		main(void)
 	}
 	if (!data.roads)
 		eExit2(1, &data, used, "No roads.");
-	printCouples(data.solution);
 	pAsciiClose();
-	pAsciiOpen();
+	pAsciiOpen(1);
 	oData(&data);
+	pAsciiMsg("Chemin utilisé:", 7);
 	pAsciiClose();
-
-
-// // DEBUG LISTING DES BOX
-// ft_printf("fourmis: %d\n", data.ants);
-// int i; t_pBoxLink *link; t_pBox *box = data.box; while (box)
-// { ft_printf("(%d)[n%d, %s] %d %d\n", box->type, box->id, box->name, box->x, box->y);
-// 	if (box->links)
-// 	{
-// 		link = box->links;
-// 		i = 0; while (link && ++i)
-// 		{
-// 			ft_printf("tube %d: %s\n", i, (link->link)->name);
-// 			link = link->n;
-// 		}
-// 	} box = box->n; }
-//
-//
-//
-// // DEBUG LIST CHEMIN
-// if (data.roads)
-// {
-// 	t_roads *roads = data.roads; int j;
-// 	while (roads)
-// 	{
-// 		ft_printf("(ID. %2d)[Poid. %2d] ", roads->id, roads->score);
-// 		j = -1;
-// 		while (roads->tab[++j])
-// 			ft_printf("-> (%d)%s ", roads->tab[j]->id, roads->tab[j]->name);
-// 		ft_printf("\n%18s", "used box id: ");
-// 		i = -1;
-// 		while (++i < (data.idbox + 1))
-// 			if (roads->u[i] == 1)
-// 				ft_printf("[%d] ", i);
-// 		ft_printf("\n\n");
-// 		roads = roads->n;
-// 	}
-// } else { ft_printf("pas de route\n"); }
-
-
-
-
-
+	data.ret = 0;
+	data.tmax = data.ants;
+	data.rendmax = 0;
+	oPrint(&data, data.p, (t_roads *)NULL, 0);
 	ft_strdel(&used);
 	fDataBox(&data);
 	return (0);
-}
-
-void		printCouples(t_couple *lst)
-{
-	t_roads *road;
-	int i;
-
-	ft_printf("Couples actuel: \n");
-	while (lst)
-	{
-		if (lst->r)
-		{
-			ft_printf("Road %d (%d): ", lst->r->id, lst->r->score);
-			road = lst->r;
-			i = -1;
-			while (road->tab[++i])
-				ft_printf("[%s] ", road->tab[i]->name);
-			ft_printf("\n");
-		}
-		lst = lst->n;
-	}
 }

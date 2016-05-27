@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/27 09:28:40 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 10:28:05 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 16:53:03 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ void	rSize(t_data *d, int s, t_pBoxLink *lnk, t_pBoxLink *root)
 	{
 		if (lnk->link != d->start && lnk->link != d->end &&
 			(lnk->link->size == 0 || lnk->link->size > s))
-		{
 			lnk->link->size = s;
-			ft_printf("BoxSize: [%s] -> %d\n", lnk->link->name, s);
-		}
 		lnk = lnk->n;
 	}
 	lnk = root;
@@ -44,7 +41,7 @@ void	iSizeRoad(t_data *d, t_pBox *next, t_pBoxLink *lnk, t_roads *road)
 		road->tab[++i] = next;
 		if (i > 0 && road->tab[i] == road->tab[(i - 1)])
 			eExit(1, d, "No roads.");
-		if (next == d->end)
+		if (next == d->end && ((road->score = i) || 1))
 			return ;
 		lnk = next->links;
 		s = INT_MAX;

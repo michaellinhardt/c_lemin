@@ -20,6 +20,7 @@ ft_lemin_output \
 ft_lemin_rcouples \
 ft_lemin_icouples \
 ft_lemin_size \
+ft_lemin_print \
 ft_lemin_addbox
 
 SRC := $(addprefix $(SRC_DIR)/, $(addsuffix .$(LANGAGE), $(LIST)))
@@ -64,7 +65,7 @@ leaks: $(NAME) -leaks
 #leaks: test
 
 -leaks:
-	@-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) < maps/lozange
+	@-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) < maps/1000.map
 
 re: fclean libft $(NAME)
 

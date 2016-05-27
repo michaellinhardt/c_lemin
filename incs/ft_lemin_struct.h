@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:28:15 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 09:54:03 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 15:12:18 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct			s_pBox
 	char				*name;
 	int					id;
 	char				type;
+	int					ant;
 	int					size;
 	int					sizeok;
 	int					x;
@@ -69,6 +70,7 @@ typedef struct			s_data
 	int					tmax;
 	int					nbroads;
 	int					roadsmax;
+	t_couple			*p;
 	t_couple			*solution;
 	t_couple			*couples;
 	char				*name;

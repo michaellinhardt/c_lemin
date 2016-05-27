@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:09:44 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/26 06:18:23 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 14:31:41 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		eExit(int error, t_data *d, char *msg)
 	if (error == 1)
 		;
 	pAsciiClose();
-	pAsciiOpen();
+	pAsciiOpen(1);
 	oData(d);
 	fDataBox(d);
 	ft_printf("\e[93m  | \e[31m%s%-62s\e[93m  |\n", "🚨  Error: ", msg);
@@ -32,7 +32,7 @@ int		eExit2(int error, t_data *d, char *del, char *msg)
 	if (error == 1)
 		;
 	pAsciiClose();
-	pAsciiOpen();
+	pAsciiOpen(1);
 	oData(d);
 	ft_strdel(&del);
 	fDataBox(d);
