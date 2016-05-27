@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 01:50:14 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 15:26:23 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 18:08:35 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		pasciiopen(int i);
 
 int			oants(char *line);
 void		odata(t_data *d);
-void		omap(char *l, t_pread *s, t_data *d);
+void		omap(char *l, t_pride *s, t_data *d);
 
 void		icouplesstruct(t_data *d, t_couple *new, int i, t_couple **ptr);
 int			icouples(t_data *d);

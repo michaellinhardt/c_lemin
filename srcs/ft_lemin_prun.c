@@ -36,7 +36,7 @@ char		ptype(char *l)
 		return (0);
 }
 
-int			preadwhile(t_data *d, char *l, t_pread *s)
+int			pridewhile(t_data *d, char *l, t_pride *s)
 {
 	omap(l, s, d);
 	((!*l || *l == 'L') &&
@@ -60,13 +60,13 @@ int			preadwhile(t_data *d, char *l, t_pread *s)
 	return (0);
 }
 
-void		pread(t_data *d, char *l)
+void		pride(t_data *d, char *l)
 {
-	t_pread		s;
+	t_pride		s;
 
-	ft_bzero(&s, sizeof(t_pread));
+	ft_bzero(&s, sizeof(t_pride));
 	while (ft_strdel(&l) && get_next_line(0, &l))
-		if (preadwhile(d, l, &s))
+		if (pridewhile(d, l, &s))
 			break ;
 	if (ft_strdel(&l) && !d->box)
 		eexit(1, d, "You forget the box.");
@@ -104,7 +104,7 @@ void		prun(t_data *d)
 	d->start = NULL;
 	d->end = NULL;
 	d->idbox = 1;
-	pread(d, (char *)NULL);
+	pride(d, (char *)NULL);
 	if (!d->start || !d->end)
 		eexit(1, d, "Start/end box missing.");
 	get_next_line(-10, NULL);

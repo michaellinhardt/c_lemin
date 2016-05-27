@@ -38,7 +38,7 @@ int			oants(char *line)
 	return (0);
 }
 
-void		omap(char *l, t_pread *s, t_data *d)
+void		omap(char *l, t_pride *s, t_data *d)
 {
 	if (((!*l || *l == 'L') && !s->step) ||
 		((!ft_strcmp(l, "##start") && s->start)) ||
