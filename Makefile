@@ -1,4 +1,16 @@
-FLAGS	= -Wall -Wextra -Werror -g
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2016/05/27 18:21:52 by mlinhard          #+#    #+#              #
+#    Updated: 2016/05/27 18:21:56 by mlinhard         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+FLAGS	= -Wall -Wextra -Werror
 CC		= gcc $(FLAGS)
 INCS 	= -I./incs -I./libft/includes
 LIBS 	= ./libft
