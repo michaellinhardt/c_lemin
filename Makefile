@@ -65,7 +65,7 @@ leaks: $(NAME) -leaks
 #leaks: test
 
 -leaks:
-	@-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) < maps/1000.map
+	@-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) < maps/basic.map
 
 re: fclean libft $(NAME)
 

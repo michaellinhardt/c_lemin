@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/27 11:08:28 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 16:58:03 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 17:31:10 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void		iPrint(t_data *d, t_couple *sol, t_couple *new)
 		dPrint(d, d->p, new, (t_couple *)NULL);
 		sol = sol->n;
 	}
+	printCouples(d->p);
 }
 
 void		oPrintMove(t_data *d, t_pBox **tab, int type, int f)
@@ -79,7 +80,6 @@ void		oPrintMove(t_data *d, t_pBox **tab, int type, int f)
 void		oPrint(t_data *d, t_couple *cpl, t_roads *rds, int f)
 {
 	iPrint(d, d->solution, d->solution);
-	printCouples(d->p);
 	pAsciiOpen(0);
 	pAsciiMsg("Résultat:", 8);
 	pAsciiClose();
