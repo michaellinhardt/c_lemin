@@ -30,7 +30,7 @@ void	rsize(t_data *d, int s, t_pBoxLink *lnk, t_pBoxLink *root)
 	}
 }
 
-void	isizeRoad(t_data *d, t_pBox *next, t_pBoxLink *lnk, t_roads *road)
+void	isizeroad(t_data *d, t_pBox *next, t_pBoxLink *lnk, t_roads *road)
 {
 	int			i;
 	int			s;
