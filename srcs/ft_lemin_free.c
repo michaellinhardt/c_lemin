@@ -27,9 +27,9 @@ void	froadslast(t_data *d)
 	}
 }
 
-void	fdatalink(t_pBoxLink *lst)
+void	fdatalink(t_pboxlink *lst)
 {
-	t_pBoxLink	*del;
+	t_pboxlink	*del;
 
 	while (lst)
 	{
@@ -71,8 +71,8 @@ void	fdatacouples(t_couple **ptr, t_couple *del, t_couple *lst)
 
 void	fdatabox(t_data *d)
 {
-	t_pBox		*lst;
-	t_pBox		*del;
+	t_pbox		*lst;
+	t_pbox		*del;
 
 	if (d && d->box)
 	{

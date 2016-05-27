@@ -14,7 +14,7 @@
 
 int			dboxcheck(t_data *d, char *name, int x, int y)
 {
-	t_pBox	*lst;
+	t_pbox	*lst;
 
 	lst = d->box;
 	while (lst)
@@ -28,9 +28,9 @@ int			dboxcheck(t_data *d, char *name, int x, int y)
 
 int			dboxadd(t_data *d, char *name, int x, int y)
 {
-	t_pBox	*new;
+	t_pbox	*new;
 
-	if (!(new = (t_pBox *)ft_memalloc(sizeof(t_pBox))))
+	if (!(new = (t_pbox *)ft_memalloc(sizeof(t_pbox))))
 		return (1);
 	if (!d->box)
 		d->box = new;

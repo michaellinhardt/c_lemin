@@ -12,7 +12,7 @@
 
 #include "ft_lemin.h"
 
-void	rsize(t_data *d, int s, t_pBoxLink *lnk, t_pBoxLink *root)
+void	rsize(t_data *d, int s, t_pboxlink *lnk, t_pboxlink *root)
 {
 	while (lnk)
 	{
@@ -30,7 +30,7 @@ void	rsize(t_data *d, int s, t_pBoxLink *lnk, t_pBoxLink *root)
 	}
 }
 
-void	isizeroad(t_data *d, t_pBox *next, t_pBoxLink *lnk, t_roads *road)
+void	isizeroad(t_data *d, t_pbox *next, t_pboxlink *lnk, t_roads *road)
 {
 	int			i;
 	int			s;

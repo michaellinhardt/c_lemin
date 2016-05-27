@@ -56,7 +56,7 @@ void		iprint(t_data *d, t_couple *sol, t_couple *new)
 	printcouples(d->p);
 }
 
-void		oprintmove(t_data *d, t_pBox **tab, int type, int f)
+void		oprintmove(t_data *d, t_pbox **tab, int type, int f)
 {
 	if (type == 1)
 	{

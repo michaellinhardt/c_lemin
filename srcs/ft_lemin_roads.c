@@ -12,7 +12,7 @@
 
 #include "ft_lemin.h"
 
-int			iroads(t_data *d, t_roads *new, t_pBox **tab, char *u)
+int			iroads(t_data *d, t_roads *new, t_pbox **tab, char *u)
 {
 	int		size;
 	char	*u2;
@@ -20,16 +20,16 @@ int			iroads(t_data *d, t_roads *new, t_pBox **tab, char *u)
 	size = (d->idbox + 3);
 	if (!(new = (t_roads *)ft_memalloc(sizeof(t_roads))))
 		return (1);
-	if (!(tab = (t_pBox **)ft_memalloc(sizeof(t_pBox *) * (size))))
+	if (!(tab = (t_pbox **)ft_memalloc(sizeof(t_pbox *) * (size))))
 		return (1);
 	if (!(u2 = ft_strnew((d->idbox + 1))))
 		return (1);
 	if (d->roads)
 		ft_memcpy(d->roads->u, u, (sizeof(char) * (d->idbox + 1)));
 	if (d->roads)
-		ft_memcpy(tab, d->roads->tab, (sizeof(t_pBox *) * (size)));
+		ft_memcpy(tab, d->roads->tab, (sizeof(t_pbox *) * (size)));
 	while (!d->roads && size--)
-		tab[size] = (t_pBox *)NULL;
+		tab[size] = (t_pbox *)NULL;
 	new->u = u2;
 	new->tab = tab;
 	new->n = d->roads;
@@ -39,9 +39,9 @@ int			iroads(t_data *d, t_roads *new, t_pBox **tab, char *u)
 	return (0);
 }
 
-void		rroads(t_data *d, t_pBox *box, char *used, int i)
+void		rroads(t_data *d, t_pbox *box, char *used, int i)
 {
-	t_pBoxLink *lnk;
+	t_pboxlink *lnk;
 
 	lnk = box->links;
 	used[box->id] = 1;
@@ -53,12 +53,12 @@ void		rroads(t_data *d, t_pBox *box, char *used, int i)
 			d->roads->score = (i + 1);
 			d->roads->tab[(i + 1)] = lnk->link;
 			d->roads->tab[(i + 2)] = NULL;
-			iroads(d, (t_roads *)NULL, (t_pBox **)NULL, used);
+			iroads(d, (t_roads *)NULL, (t_pbox **)NULL, used);
 		}
 		else if (!used[lnk->link->id])
 			rroads(d, lnk->link, used, (i + 1));
 		lnk = lnk->n;
 	}
-	d->roads->tab[i] = (t_pBox *)NULL;
+	d->roads->tab[i] = (t_pbox *)NULL;
 	used[box->id] = 0;
 }

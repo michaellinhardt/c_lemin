@@ -19,7 +19,7 @@ void	ialgo(t_data *data, char *used)
 	data->p = NULL;
 	data->roads = NULL;
 	data->i = 0;
-	iroads(data, (t_roads *)NULL, (t_pBox **)NULL, (char *)NULL);
+	iroads(data, (t_roads *)NULL, (t_pbox **)NULL, (char *)NULL);
 	if (data->idbox <= 200)
 	{
 		rroads(data, data->start, used, 0);

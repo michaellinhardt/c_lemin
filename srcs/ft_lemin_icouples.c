@@ -32,7 +32,7 @@ void		icouplesstruct(t_data *d, t_couple *new, int i, t_couple **ptr)
 	}
 }
 
-void		imaxroads(t_data *d, int i, t_pBoxLink *lst)
+void		imaxroads(t_data *d, int i, t_pboxlink *lst)
 {
 	d->roadsmax = d->idbox;
 	lst = d->start->links;
@@ -48,7 +48,7 @@ void		imaxroads(t_data *d, int i, t_pBoxLink *lst)
 
 int			icouples(t_data *d)
 {
-	imaxroads(d, 0, (t_pBoxLink *)NULL);
+	imaxroads(d, 0, (t_pboxlink *)NULL);
 	icouplesstruct(d, (t_couple *)NULL, 0, &d->solution);
 	icouplesstruct(d, (t_couple *)NULL, 0, &d->couples);
 	d->solution->score = INT_MAX;

@@ -6,20 +6,20 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 05:28:15 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 18:08:35 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 18:17:28 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LEMIN_STRUCT_H
 # define FT_LEMIN_STRUCT_H
 
-typedef struct			s_pBoxLink
+typedef struct			s_pboxlink
 {
-	struct s_pBox		*link;
-	struct s_pBoxLink	*n;
-}						t_pBoxLink;
+	struct s_pbox		*link;
+	struct s_pboxlink	*n;
+}						t_pboxlink;
 
-typedef struct			s_pBox
+typedef struct			s_pbox
 {
 	char				*name;
 	int					id;
@@ -29,16 +29,16 @@ typedef struct			s_pBox
 	int					sizeok;
 	int					x;
 	int					y;
-	struct s_pBox		*n;
-	struct s_pBoxLink	*links;
-}						t_pBox;
+	struct s_pbox		*n;
+	struct s_pboxlink	*links;
+}						t_pbox;
 
 typedef struct			s_roads
 {
 	int					id;
 	int					score;
 	char				*u;
-	t_pBox				**tab;
+	t_pbox				**tab;
 	struct s_roads		*n;
 }						t_roads;
 
@@ -50,7 +50,7 @@ typedef struct			s_couple
 	struct s_couple		*p;
 }						t_couple;
 
-typedef struct			t_pride
+typedef struct			s_pride
 {
 	int					i;
 	char				j;
@@ -75,9 +75,9 @@ typedef struct			s_data
 	t_couple			*couples;
 	char				*name;
 	t_roads				*roads;
-	t_pBox				*box;
-	t_pBox				*start;
-	t_pBox				*end;
+	t_pbox				*box;
+	t_pbox				*start;
+	t_pbox				*end;
 }						t_data;
 
 #endif
