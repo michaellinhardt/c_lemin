@@ -50,7 +50,7 @@ typedef struct			s_couple
 	struct s_couple		*p;
 }						t_couple;
 
-typedef struct			t_pRead
+typedef struct			t_pread
 {
 	int					i;
 	char				j;
@@ -58,7 +58,7 @@ typedef struct			t_pRead
 	char				start;
 	char				end;
 	char				step;
-}						t_pRead;
+}						t_pread;
 
 typedef struct			s_data
 {

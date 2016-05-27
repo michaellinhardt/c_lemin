@@ -19,39 +19,39 @@
 # include <fcntl.h>
 
 
-int			eExit(int error, t_data *d, char *msg);
-int			eExit2(int error, t_data *d, char *del, char *msg);
+int			eexit(int error, t_data *d, char *msg);
+int			eexit2(int error, t_data *d, char *del, char *msg);
 
-char		pType(char *l);
-void		pRun(t_data *d);
+char		ptype(char *l);
+void		prun(t_data *d);
 
-void		dBox(t_data *d, char *l, int x, char type);
-int			dLink(t_data *d, char *l, int i, int j);
+void		dbox(t_data *d, char *l, int x, char type);
+int			dlink(t_data *d, char *l, int i, int j);
 
-void		rRoads(t_data *d, t_pBox *box, char *used, int i);
-int			iRoads(t_data *d, t_roads *new, t_pBox **tab, char *u);
+void		rroads(t_data *d, t_pBox *box, char *used, int i);
+int			iroads(t_data *d, t_roads *new, t_pBox **tab, char *u);
 
-void		fDataBox(t_data *d);
-void		fRoadsLast(t_data *d);
+void		fdatabox(t_data *d);
+void		froadslast(t_data *d);
 
-void		printCouples(t_couple *lst);
-void		pAscii(void);
-int			pAsciiMsg(char *msg, int color);
-void		pAsciiClose(void);
-void		pAsciiOpen(int i);
+void		printcouples(t_couple *lst);
+void		pascii(void);
+int			pasciimsg(char *msg, int color);
+void		pasciiclose(void);
+void		pasciiopen(int i);
 
-int			oAnts(char *line);
-void		oData(t_data *d);
-void		oMap(char *l, t_pRead *s, t_data *d);
+int			oants(char *line);
+void		odata(t_data *d);
+void		omap(char *l, t_pread *s, t_data *d);
 
-void		iCouplesStruct(t_data *d, t_couple *new, int i, t_couple **ptr);
-int			iCouples(t_data *d);
+void		icouplesstruct(t_data *d, t_couple *new, int i, t_couple **ptr);
+int			icouples(t_data *d);
 
-void		rCouples(t_data *d, int slot, t_couple *lst);
+void		rcouples(t_data *d, int slot, t_couple *lst);
 
 void		rSize(t_data *d, int s, t_pBoxLink *lnk, t_pBoxLink *root);
 void		iSizeRoad(t_data *d, t_pBox *next, t_pBoxLink *lnk, t_roads *road);
 
-void		oPrint(t_data *d, t_couple *cpl, t_roads *rds, int f);
+void		oprint(t_data *d, t_couple *cpl, t_roads *rds, int f);
 
 #endif

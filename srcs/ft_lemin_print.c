@@ -14,7 +14,7 @@
 
 
 
-int			dPrint(t_data *d, t_couple *sol, t_couple *new, t_couple *prev)
+int			dprint(t_data *d, t_couple *sol, t_couple *new, t_couple *prev)
 {
 	if (!d->p && (d->p = new))
 		return (0);
@@ -42,23 +42,23 @@ int			dPrint(t_data *d, t_couple *sol, t_couple *new, t_couple *prev)
 	return (0);
 }
 
-void		iPrint(t_data *d, t_couple *sol, t_couple *new)
+void		iprint(t_data *d, t_couple *sol, t_couple *new)
 {
 	while (sol && sol->r)
 	{
 		if (!(new = (t_couple *)ft_memalloc(sizeof(t_couple))))
-			eExit(1, d, "Cant malloc.");
+			eexit(1, d, "Cant malloc.");
 		new->r = sol->r;
 		new->n = NULL;
 		new->p = NULL;
 		new->score = sol->score;
-		dPrint(d, d->p, new, (t_couple *)NULL);
+		dprint(d, d->p, new, (t_couple *)NULL);
 		sol = sol->n;
 	}
-	printCouples(d->p);
+	printcouples(d->p);
 }
 
-void		oPrintMove(t_data *d, t_pBox **tab, int type, int f)
+void		oprintmove(t_data *d, t_pBox **tab, int type, int f)
 {
 	if (type == 1)
 	{
@@ -77,12 +77,12 @@ void		oPrintMove(t_data *d, t_pBox **tab, int type, int f)
 	}
 }
 
-void		oPrint(t_data *d, t_couple *cpl, t_roads *rds, int f)
+void		oprint(t_data *d, t_couple *cpl, t_roads *rds, int f)
 {
-	iPrint(d, d->solution, d->solution);
-	pAsciiOpen(0);
-	pAsciiMsg("Résultat:", 8);
-	pAsciiClose();
+	iprint(d, d->solution, d->solution);
+	pasciiopen(0);
+	pasciimsg("Résultat:", 8);
+	pasciiclose();
 	while (d->ret < d->tmax && ++d->rendmax)
 	{
 		ft_printf("%5s%s", " ", "🛤  ", d->ret);
@@ -92,16 +92,16 @@ void		oPrint(t_data *d, t_couple *cpl, t_roads *rds, int f)
 			rds = cpl->r;
 			d->i = (rds->score);
 			while (--d->i > -1)
-				(rds->tab[d->i] && rds->tab[d->i]->ant) ? oPrintMove(d,
+				(rds->tab[d->i] && rds->tab[d->i]->ant) ? oprintmove(d,
 					 rds->tab, 1, 0) : 1;
 			if (d->ants-- > 0)
-				oPrintMove(d, rds->tab, 2, ++f);
+				oprintmove(d, rds->tab, 2, ++f);
 			cpl = cpl->n;
 		}
 		ft_printf("\n");
 	}
-	pAsciiOpen(0);
+	pasciiopen(0);
 	ft_printf("\e[93m  | \e[39m%-40s%35d\e[93m  |\e[39m\n",
 	 " 🏁  Nombre de tour: ", d->rendmax);
-	pAsciiClose();
+	pasciiclose();
 }

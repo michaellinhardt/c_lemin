@@ -40,7 +40,7 @@ void	iSizeRoad(t_data *d, t_pBox *next, t_pBoxLink *lnk, t_roads *road)
 	{
 		road->tab[++i] = next;
 		if (i > 0 && road->tab[i] == road->tab[(i - 1)])
-			eExit(1, d, "No roads.");
+			eexit(1, d, "No roads.");
 		if (next == d->end && ((road->score = i) || 1))
 			return ;
 		lnk = next->links;

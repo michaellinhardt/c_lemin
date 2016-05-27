@@ -12,7 +12,7 @@
 
 #include "ft_lemin.h"
 
-void	fRoadsLast(t_data *d)
+void	froadslast(t_data *d)
 {
 	t_roads		*del;
 
@@ -27,7 +27,7 @@ void	fRoadsLast(t_data *d)
 	}
 }
 
-void	fDataLink(t_pBoxLink *lst)
+void	fdatalink(t_pBoxLink *lst)
 {
 	t_pBoxLink	*del;
 
@@ -39,7 +39,7 @@ void	fDataLink(t_pBoxLink *lst)
 	}
 }
 
-void	fDataRoads(t_data *d)
+void	fdataroads(t_data *d)
 {
 	t_roads		*lst;
 	t_roads		*del;
@@ -58,7 +58,7 @@ void	fDataRoads(t_data *d)
 	}
 }
 
-void	fDataCouples(t_couple **ptr, t_couple *del, t_couple *lst)
+void	fdatacouples(t_couple **ptr, t_couple *del, t_couple *lst)
 {
 	while (lst)
 	{
@@ -69,7 +69,7 @@ void	fDataCouples(t_couple **ptr, t_couple *del, t_couple *lst)
 	(*ptr) = NULL;
 }
 
-void	fDataBox(t_data *d)
+void	fdatabox(t_data *d)
 {
 	t_pBox		*lst;
 	t_pBox		*del;
@@ -82,16 +82,16 @@ void	fDataBox(t_data *d)
 			del = lst;
 			lst = lst->n;
 			if (del->links)
-				fDataLink(del->links);
+				fdatalink(del->links);
 			ft_strdel(&del->name);
 			ft_memdel((void **)&del);
 		}
 	}
 	if (d->couples)
-		fDataCouples(&d->couples, (t_couple *)NULL, d->couples);
+		fdatacouples(&d->couples, (t_couple *)NULL, d->couples);
 	if (d->solution)
-		fDataCouples(&d->solution, (t_couple *)NULL, d->solution);
+		fdatacouples(&d->solution, (t_couple *)NULL, d->solution);
 	if (d->p)
-		fDataCouples(&d->solution, (t_couple *)NULL, d->p);
-	fDataRoads(d);
+		fdatacouples(&d->solution, (t_couple *)NULL, d->p);
+	fdataroads(d);
 }

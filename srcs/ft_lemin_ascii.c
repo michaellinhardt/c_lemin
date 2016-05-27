@@ -12,7 +12,7 @@
 
 #include "ft_lemin.h"
 
-int		pAsciiMsg(char *msg, int color)
+int		pasciimsg(char *msg, int color)
 {
 	ft_printf("\e[93m  | ");
 	(color == 1) ? ft_putstr("\e[31m 🚨  ") : NULL;
@@ -28,35 +28,35 @@ int		pAsciiMsg(char *msg, int color)
 	return (0);
 }
 
-void	pAsciiColor(void)
+void	pasciicolor(void)
 {
 	ft_putstr("\e[93m");
 }
 
-void	pAsciiOpen(int i)
+void	pasciiopen(int i)
 {
-	pAsciiColor();
+	pasciicolor();
 	if (i != 0)
 		ft_printf("                                      |\n");
 	ft_printf("  ,-----------------------------------------------------------");
 	ft_printf("----------------.\e[39m\n");
 }
 
-void	pAsciiClose(void)
+void	pasciiclose(void)
 {
-	pAsciiColor();
+	pasciicolor();
 	ft_printf("  `-----------------------------------------------------------");
 	ft_printf("----------------'\e[39m\n");
 }
 
-void	pAscii(void)
+void	pascii(void)
 {
 	int		fd;
 	char	*line;
 
 	line = NULL;
 	fd = open("./incs/ascii", O_RDONLY);
-	pAsciiColor();
+	pasciicolor();
 	while (ft_strdel(&line) && (get_next_line(fd, &line)) > 0)
 		ft_printf("%-80s\n", line);
 }

@@ -12,7 +12,7 @@
 
 #include "ft_lemin.h"
 
-int			rCouplesCalc(t_data *d, int t, int a, t_couple *lst)
+int			rcouplescalc(t_data *d, int t, int a, t_couple *lst)
 {
 	d->couples->score = INT_MAX;
 	d->rendmax = 0;
@@ -41,7 +41,7 @@ int			rCouplesCalc(t_data *d, int t, int a, t_couple *lst)
 	return ((d->couples->score = t));
 }
 
-void		rCouplesSave(t_couple *s, t_couple *c, int score, int score2)
+void		rcouplessave(t_couple *s, t_couple *c, int score, int score2)
 {
 	t_couple	*s2;
 	t_couple	*c2;
@@ -66,7 +66,7 @@ void		rCouplesSave(t_couple *s, t_couple *c, int score, int score2)
 	}
 }
 
-int			rCouplesValid(t_data *d, t_couple *cpl, char *u, int i)
+int			rcouplesvalid(t_data *d, t_couple *cpl, char *u, int i)
 {
 	u = ft_strnew((d->idbox + 1));
 	u = ft_memcpy(u, cpl->r->u, (sizeof(char) * (d->idbox + 1)));
@@ -86,20 +86,20 @@ int			rCouplesValid(t_data *d, t_couple *cpl, char *u, int i)
 	return (1);
 }
 
-void		rCouplesTest(t_data *d, t_couple *lst, t_couple *next)
+void		rcouplestest(t_data *d, t_couple *lst, t_couple *next)
 {
 	while (lst && lst->r)
 	{
 		if (lst->n && lst->n->r && lst->r->id == lst->n->r->id)
 			return ;
 		if (lst->n && lst->n->r)
-			rCouplesTest(d, lst->n, (t_couple *)NULL);
-		else if (!(d->i = 0) && rCouplesValid(d, d->couples, (char *)NULL, -1))
+			rcouplestest(d, lst->n, (t_couple *)NULL);
+		else if (!(d->i = 0) && rcouplesvalid(d, d->couples, (char *)NULL, -1))
 		{
-			rCouplesCalc(d, 0, d->ants, d->couples);
+			rcouplescalc(d, 0, d->ants, d->couples);
 			if (d->solution->score == 0 ||
 				d->solution->score >= d->couples->score)
-				rCouplesSave(d->solution, d->couples, 0, 0);
+				rcouplessave(d->solution, d->couples, 0, 0);
 		}
 		if (!lst->r->n)
 			return ;
@@ -115,7 +115,7 @@ void		rCouplesTest(t_data *d, t_couple *lst, t_couple *next)
 	}
 }
 
-void		rCouples(t_data *d, int slot, t_couple *lst)
+void		rcouples(t_data *d, int slot, t_couple *lst)
 {
 	int		slot2;
 
@@ -134,6 +134,6 @@ void		rCouples(t_data *d, int slot, t_couple *lst)
 				lst->r = (lst->p)->r->n;
 			lst = lst->n;
 		}
-		rCouplesTest(d, d->couples, (t_couple *)NULL);
+		rcouplestest(d, d->couples, (t_couple *)NULL);
 	}
 }

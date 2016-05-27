@@ -12,7 +12,7 @@
 
 #include "ft_lemin.h"
 
-void		dLinkAdd(t_pBox *b1, t_pBox *b2, t_pBoxLink *l1)
+void		dlinkadd(t_pBox *b1, t_pBox *b2, t_pBoxLink *l1)
 {
 	t_pBoxLink *l;
 
@@ -32,7 +32,7 @@ void		dLinkAdd(t_pBox *b1, t_pBox *b2, t_pBoxLink *l1)
 	}
 }
 
-int			dLinkVerif(char n1[4096], char n2[4096], t_pBox	*lst, t_pBox *b1)
+int			dlinkverif(char n1[4096], char n2[4096], t_pBox	*lst, t_pBox *b1)
 {
 	t_pBox		*b2;
 	t_pBoxLink	*l1;
@@ -53,14 +53,14 @@ int			dLinkVerif(char n1[4096], char n2[4096], t_pBox	*lst, t_pBox *b1)
 			return (1);
 		if (!(l2 = (t_pBoxLink *)ft_memalloc(sizeof(t_pBoxLink))))
 			return (1);
-		dLinkAdd(b1, b2, l1);
-		dLinkAdd(b2, b1, l2);
+		dlinkadd(b1, b2, l1);
+		dlinkadd(b2, b1, l2);
 		return (0);
 	}
 	return (1);
 }
 
-int			dLink(t_data *d, char *l, int i, int j)
+int			dlink(t_data *d, char *l, int i, int j)
 {
 	char	n1[4096];
 	char	n2[4096];
@@ -71,7 +71,7 @@ int			dLink(t_data *d, char *l, int i, int j)
 		n1[i] = l[i];
 	while (l[++i])
 		n2[++j] = l[i];
-	if (dLinkVerif(n1, n2, d->box, (t_pBox *)NULL))
+	if (dlinkverif(n1, n2, d->box, (t_pBox *)NULL))
 		return (1);
 	return (0);
 }

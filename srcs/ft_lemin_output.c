@@ -12,7 +12,7 @@
 
 #include "ft_lemin.h"
 
-int			oAnts(char *line)
+int			oants(char *line)
 {
 	size_t		len;
 	char		*verif;
@@ -22,51 +22,51 @@ int			oAnts(char *line)
 	while (line && *verif && ft_isdigit(*verif))
 		verif++;
 	if (!ft_strcmp(line, "##start") || !ft_strcmp(line, "##end"))
-		pAsciiMsg(line, 1);
+		pasciimsg(line, 1);
 	else if (*line == '#')
-		pAsciiMsg(line, 5);
+		pasciimsg(line, 5);
 	else if (!line)
-		pAsciiMsg("(get_next_line return NULL for line)", 5);
+		pasciimsg("(get_next_line return NULL for line)", 5);
 	else if ((len = ft_strlen(line)) > 10)
-		pAsciiMsg(line, 1);
+		pasciimsg(line, 1);
 	else if (len == 10 && ft_atoimax(line) > INT_MAX)
-		pAsciiMsg(line, 1);
+		pasciimsg(line, 1);
 	else if (line && (!*verif))
-		pAsciiMsg(line, 6);
+		pasciimsg(line, 6);
 	else
-		pAsciiMsg(line, 1);
+		pasciimsg(line, 1);
 	return (0);
 }
 
-void		oMap(char *l, t_pRead *s, t_data *d)
+void		omap(char *l, t_pread *s, t_data *d)
 {
 	if (((!*l || *l == 'L') && !s->step) ||
 		((!ft_strcmp(l, "##start") && s->start)) ||
 		(!ft_strcmp(l, "##end") && s->end))
-		pAsciiMsg(l, 1);
+		pasciimsg(l, 1);
 	else if (l[0] != '#')
 	{
-		if ((!(s->j = pType(l)) && !s->step) || (s->j == 2 && !d->box))
-			pAsciiMsg(l, 1);
+		if ((!(s->j = ptype(l)) && !s->step) || (s->j == 2 && !d->box))
+			pasciimsg(l, 1);
 		else if (s->j == 1 && !s->step)
 			;
 		else if (((s->j == 1 || !s->j) && s->step == 1) ||
-				((s->j == 2 && dLink(d, l, -1, -1)) ||
+				((s->j == 2 && dlink(d, l, -1, -1)) ||
 				(s->step && (!*l || *l == 'L'))))
-			pAsciiMsg(l, 3);
+			pasciimsg(l, 3);
 		else if (s->j == 2)
-			pAsciiMsg(l, 7);
+			pasciimsg(l, 7);
 	}
 	else if (!ft_strcmp(l, "##start") || !ft_strcmp(l, "##end") ||
 		!ft_strcmp(l, "##stop"))
-		pAsciiMsg(l, 4);
+		pasciimsg(l, 4);
 	else if (l[0] && l[0] == '#' && l[1] && l[1] == '#')
-	 	pAsciiMsg(l, 3);
+	 	pasciimsg(l, 3);
 	else if (l[0] && l[0] == '#')
-		pAsciiMsg(l, 5);
+		pasciimsg(l, 5);
 }
 
-void		oData(t_data *d)
+void		odata(t_data *d)
 {
 	ft_printf("\e[93m  | \e[39m%-70s%5d\e[93m  |\e[39m\n",
 	 " 🐛  Fourmis: ", d->ants);
@@ -83,11 +83,11 @@ void		oData(t_data *d)
 		ft_printf("\e[93m  | \e[39m%-70s%5d\e[93m  |\e[39m\n",
 	 	" 🛤  Chemins utilisables: ", d->roadsmax);
 	}
-	pAsciiClose();
-	pAsciiOpen(0);
+	pasciiclose();
+	pasciiopen(0);
 }
 
-void		printCouples(t_couple *lst)
+void		printcouples(t_couple *lst)
 {
 	t_roads *road;
 	int i;

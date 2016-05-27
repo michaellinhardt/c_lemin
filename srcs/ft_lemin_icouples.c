@@ -12,12 +12,12 @@
 
 #include "ft_lemin.h"
 
-void		iCouplesStruct(t_data *d, t_couple *new, int i, t_couple **ptr)
+void		icouplesstruct(t_data *d, t_couple *new, int i, t_couple **ptr)
 {
 	while (++i <= d->roadsmax)
 	{
 		if (!(new = (t_couple *)ft_memalloc(sizeof(t_couple))))
-			eExit(1, d, "Cant malloc.");
+			eexit(1, d, "Cant malloc.");
 		new->r = NULL;
 		if (!(*ptr) && !(new->n = NULL))
 		{
@@ -32,7 +32,7 @@ void		iCouplesStruct(t_data *d, t_couple *new, int i, t_couple **ptr)
 	}
 }
 
-void		iMaxroads(t_data *d, int i, t_pBoxLink *lst)
+void		imaxroads(t_data *d, int i, t_pBoxLink *lst)
 {
 	d->roadsmax = d->idbox;
 	lst = d->start->links;
@@ -46,12 +46,12 @@ void		iMaxroads(t_data *d, int i, t_pBoxLink *lst)
 	d->roadsmax = (i < d->roadsmax) ? i : d->roadsmax;
 }
 
-int			iCouples(t_data *d)
+int			icouples(t_data *d)
 {
-	iMaxroads(d, 0, (t_pBoxLink *)NULL);
-	iCouplesStruct(d, (t_couple *)NULL, 0, &d->solution);
-	iCouplesStruct(d, (t_couple *)NULL, 0, &d->couples);
+	imaxroads(d, 0, (t_pBoxLink *)NULL);
+	icouplesstruct(d, (t_couple *)NULL, 0, &d->solution);
+	icouplesstruct(d, (t_couple *)NULL, 0, &d->couples);
 	d->solution->score = INT_MAX;
-	rCouples(d, (d->roadsmax + 1), (t_couple *)NULL);
+	rcouples(d, (d->roadsmax + 1), (t_couple *)NULL);
 	return (0);
 }

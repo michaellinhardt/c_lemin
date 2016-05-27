@@ -6,13 +6,13 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 16:43:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/05/27 09:05:06 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/05/27 18:01:02 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lemin.h"
 
-int			dBoxCheck(t_data *d, char *name, int x, int y)
+int			dboxcheck(t_data *d, char *name, int x, int y)
 {
 	t_pBox	*lst;
 
@@ -26,7 +26,7 @@ int			dBoxCheck(t_data *d, char *name, int x, int y)
 	return (0);
 }
 
-int			dBoxAdd(t_data *d, char *name, int x, int y)
+int			dboxadd(t_data *d, char *name, int x, int y)
 {
 	t_pBox	*new;
 
@@ -50,7 +50,7 @@ int			dBoxAdd(t_data *d, char *name, int x, int y)
 	return (0);
 }
 
-int			dBoxCoord(t_data *d, char *l, char c, int len)
+int			dboxcoord(t_data *d, char *l, char c, int len)
 {
 	char		coord[12];
 	intmax_t	icoord;
@@ -75,41 +75,40 @@ int			dBoxCoord(t_data *d, char *l, char c, int len)
 	return ((int)icoord);
 }
 
-void		dBoxOutput(char type, char *l)
+void		dboxoutput(char type, char *l)
 {
 	if (type == 0)
-		pAsciiMsg(l, 2);
+		pasciimsg(l, 2);
 	else if (type == 1)
-		pAsciiMsg(l, 8);
+		pasciimsg(l, 8);
 	else if (type == 2)
-		pAsciiMsg(l, 9);
-
+		pasciimsg(l, 9);
 }
 
-void		dBox(t_data *d, char *l, int x, char type)
+void		dbox(t_data *d, char *l, int x, char type)
 {
 	int		y;
 	char	*name;
 
 	d->i = -1;
 	while (l[++d->i] && l[d->i] != ' ')
-		if (l[d->i] == '-' && !pAsciiMsg(l, 1))
-			eExit2(1, d, l, "Dont use - in box name please.");
+		if (l[d->i] == '-' && !pasciimsg(l, 1))
+			eexit2(1, d, l, "Dont use - in box name please.");
 	if (l[d->i])
 		name = ft_strsub(l, 0, d->i);
-	else if (!pAsciiMsg(l, 1))
-		eExit2(1, d, l, "Missing box name.");
-	if (d->i == 0 && !pAsciiMsg(l, 1))
-		eExit2(1, d, l, "You forget the box name.");
+	else if (!pasciimsg(l, 1))
+		eexit2(1, d, l, "Missing box name.");
+	if (d->i == 0 && !pasciimsg(l, 1))
+		eexit2(1, d, l, "You forget the box name.");
 	d->ret = 0;
-	x = dBoxCoord(d, l, ' ', 0);
-	y = dBoxCoord(d, l, '\0', 0);
+	x = dboxcoord(d, l, ' ', 0);
+	y = dboxcoord(d, l, '\0', 0);
 	d->i = type;
-	if ((d->ret == -1) || dBoxCheck(d, name, x, y) || dBoxAdd(d, name, x, y))
+	if ((d->ret == -1) || dboxcheck(d, name, x, y) || dboxadd(d, name, x, y))
 	{
-		pAsciiMsg(l, 1);
+		pasciimsg(l, 1);
 		ft_strdel(&name);
-		eExit2(1, d, l, "Bad box informations.");
+		eexit2(1, d, l, "Bad box informations.");
 	}
-	dBoxOutput(type, l);
+	dboxoutput(type, l);
 }

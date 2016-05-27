@@ -12,32 +12,32 @@
 
 #include "ft_lemin.h"
 
-int		eExit(int error, t_data *d, char *msg)
+int		eexit(int error, t_data *d, char *msg)
 {
 	if (error == 1)
 		;
-	pAsciiClose();
-	pAsciiOpen(1);
-	oData(d);
-	fDataBox(d);
+	pasciiclose();
+	pasciiopen(1);
+	odata(d);
+	fdatabox(d);
 	ft_printf("\e[93m  | \e[31m%s%-62s\e[93m  |\n", "🚨  Error: ", msg);
-	pAsciiClose();
+	pasciiclose();
 	get_next_line(-10, NULL);
 	exit(0);
 	return (1);
 }
 
-int		eExit2(int error, t_data *d, char *del, char *msg)
+int		eexit2(int error, t_data *d, char *del, char *msg)
 {
 	if (error == 1)
 		;
-	pAsciiClose();
-	pAsciiOpen(1);
-	oData(d);
+	pasciiclose();
+	pasciiopen(1);
+	odata(d);
 	ft_strdel(&del);
-	fDataBox(d);
+	fdatabox(d);
 	ft_printf("\e[93m  | \e[31m%s%-62s\e[93m  |\n", "🚨  Error: ", msg);
-	pAsciiClose();
+	pasciiclose();
 	get_next_line(-10, NULL);
 	exit(0);
 	return (1);

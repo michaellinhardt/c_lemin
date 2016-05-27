@@ -12,7 +12,7 @@
 
 #include "ft_lemin.h"
 
-int			iRoads(t_data *d, t_roads *new, t_pBox **tab, char *u)
+int			iroads(t_data *d, t_roads *new, t_pBox **tab, char *u)
 {
 	int		size;
 	char	*u2;
@@ -39,7 +39,7 @@ int			iRoads(t_data *d, t_roads *new, t_pBox **tab, char *u)
 	return (0);
 }
 
-void		rRoads(t_data *d, t_pBox *box, char *used, int i)
+void		rroads(t_data *d, t_pBox *box, char *used, int i)
 {
 	t_pBoxLink *lnk;
 
@@ -53,10 +53,10 @@ void		rRoads(t_data *d, t_pBox *box, char *used, int i)
 			d->roads->score = (i + 1);
 			d->roads->tab[(i + 1)] = lnk->link;
 			d->roads->tab[(i + 2)] = NULL;
-			iRoads(d, (t_roads *)NULL, (t_pBox **)NULL, used);
+			iroads(d, (t_roads *)NULL, (t_pBox **)NULL, used);
 		}
 		else if (!used[lnk->link->id])
-			rRoads(d, lnk->link, used, (i + 1));
+			rroads(d, lnk->link, used, (i + 1));
 		lnk = lnk->n;
 	}
 	d->roads->tab[i] = (t_pBox *)NULL;
