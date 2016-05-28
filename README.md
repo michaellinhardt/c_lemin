@@ -4,6 +4,8 @@
 - see docs/lemin.pdf for more
 - Date: may 2016
 
+![alt tag](https://github.com/nesthub/c_lemin/raw/master/docs/lemin.pdf)
+
 ## About
 This programme is initialized with a file containing the parameters. Paramaters
 are describing a map with box and link beetwin them. A starting box and an ending
