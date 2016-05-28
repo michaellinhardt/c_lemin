@@ -4,7 +4,7 @@
 - see docs/lemin.pdf for more
 - Date: may 2016
 
-![alt tag](https://github.com/nesthub/c_lemin/raw/master/docs/lemin.pdf)
+![alt tag](https://github.com/nesthub/c_lemin/raw/master/docs/lemin.png)
 
 ## About
 This programme is initialized with a file containing the parameters. Paramaters
